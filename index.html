@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jack Cole — Freelance Sound Engineer & AV Technician</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b0b0b'/%3E%3Crect x='1' y='1' width='62' height='62' fill='none' stroke='%23f5a623' stroke-width='2'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia%2C serif' font-weight='700' font-size='28' fill='%23f5a623' letter-spacing='1'%3EJC%3C/text%3E%3C/svg%3E">
+  <link rel="alternate icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADw0lEQVR4nO2bW2jTUBjH/8mapU3b2bm51QuiDjedgji1Mi8MBoKoeJkgguCFTdQXHYgvA1+8gcoeRBRnQRSVTQUFFR3oQJlTUbQoXsdwc146dt/sek0bH3xwWbq1Luk+Ifm99SQn/efXky8np4SxWCwiNIwBANpdDuocJGTtbANLHYIaw+APWTvbqHKMKYNHvOZHgC6AOgA1ugDqANToAqgDUKMLoA5AjS6AOgA1ugDqANToAqgDUKN5AYb4uyRGbUUGCqYb4+637Wwv7rsDMbdl2lhscJpQmJuKOVOMSLcysJpY/PJF8b07AndLGI/eh1D3Lgh/SJ2lTNUErDzWBQDgjAy+nc2WbPP0RjDvQMewfS0cg4MbbdiyzAzOyEAUgatP/LhS78PnnwJEAHkTDdhaxOPCHjt8QRE3nvvhqvOh0SMoyq2agNEyIysFV/emIyf7b5R9F/tQ89Qv2c/dEoa7pQ8vmkI4tX0cthXxKMrn4KwYXmwikNaADBuLmvLxkpO/8yogO/nBVDf4detl7AtoNJAKOLzJhmkTUiRt5x4MxO13pjb+PolCJmCmw4CSxWZJW89AFK++hOP2fdsahqc3okoOshqwuoADy0jbPv0QEE2wuI9UVP8FshGwJDdV1va1U51f9V8gE+Cwp8javIGx/5uSTEAaz8jagmENCej3yU+WM8qlJBsyAW0xqrjVpCEBTxtDsrapmfK6kGzIBNxzByEOuQpmTzbIbo3JhkxAo0fAzRfSKW26hcX8BJ4o1xSY0O5yoN3lQP4UZVMZ0qnwwWv9aB1y79+9whK3X2kxDwCo/xjCh+/KngZJBXT+imLzqR60dPyVsG6hCZsKzcP2KSvmsTQvFT3eKPZf7lOcgXxFqKlNQPGhTlx67ENI+FMUTu8Yh8qtaZg/zQgLx8DOs1iUY4Rrlx1HN6fh0w8Ba092S8SNljF5Fhha7IbiDYg4cKUfJ257UeI0ozDXiOWzOKxdYILVxCIYFvGzJ4K3rQLKqnpxzx1AJKpONtUFpMY4YqJT3I7+KKoeDqDqocqhRkD1S8DOyw+pdNkqmSgS8L4yC8+OZEra5k6V38auj7DCQ43iEZCTbUBpMQ+eY5A3yYCK9VbJ9vN1PtS+CSr9mqShqAasOd6FEqcZJU4zyldZkWFjEQiJaPQIeN0cRnWDH89iTHn/JxQJaG6PoPKuF5V3vWrlGXPI5wHU6AKoA1CjC6AOQI0ugDoANboA6gDU6AKoA1CjC6AOQI0ugDoANZoXIFkQ0eI7xJofAYzWX5//Ddc+E3LAymmRAAAAAElFTkSuQmCC">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0b0b0b;
+      --surface: #111111;
+      --surface2: #181818;
+      --border: #222222;
+      --amber: #f5a623;
+      --amber-dim: #c4811a;
+      --amber-glow: rgba(245, 166, 35, 0.12);
+      --text: #e8e2d9;
+      --muted: #7a7268;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 2.5rem;
+      background: linear-gradient(to bottom, rgba(11,11,11,0.95) 0%, transparent 100%);
+      backdrop-filter: blur(4px);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--amber); }
+
+    .nav-cta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber) !important;
+      border: 1px solid var(--amber-dim);
+      padding: 0.45rem 1.1rem;
+      transition: background 0.2s, color 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--amber) !important; color: var(--bg) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 4rem 5rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.3s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.5rem, 8vw, 9rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+
+    .hero-title span {
+      color: var(--amber);
+      display: block;
+    }
+
+    .hero-disciplines {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      font-weight: 700;
+      margin-top: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.65s forwards;
+    }
+
+    .disc-dot {
+      color: var(--amber);
+      font-weight: 400;
+    }
+
+    .disc-broadcast {
+      color: var(--amber);
+      font-weight: 600;
+    }
+
+    .hero-sub {
+      margin-top: 1.8rem;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 36ch;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.75s forwards;
+    }
+
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.95s forwards;
+    }
+
+    .btn-primary {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      background: var(--amber);
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: #ffc04d; transform: translateY(-2px); }
+
+    .btn-ghost {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
+
+    /* ── HERO RIGHT — PHOTO PLACEHOLDER ── */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(20%) brightness(0.75);
+    }
+
+    /* REPLACE THIS DIV WITH AN <img> TAG — see comment below */
+    .hero-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #1a1a1a 0%, #0e0e0e 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .placeholder-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px dashed var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .placeholder-icon svg { opacity: 0.3; }
+
+    .placeholder-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.5;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 15%),
+                  linear-gradient(to top, var(--bg) 0%, transparent 20%);
+      pointer-events: none;
+    }
+
+    /* Decorative scan line */
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--amber-dim), transparent);
+      top: 55%;
+      opacity: 0.4;
+      z-index: 3;
+      animation: scanline 4s ease-in-out infinite;
+    }
+    @keyframes scanline {
+      0%, 100% { top: 30%; opacity: 0; }
+      50% { top: 70%; opacity: 0.4; }
+    }
+
+    /* ── CLIENTS TICKER ── */
+    .ticker-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 1rem 0;
+      background: var(--surface);
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      animation: ticker 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-item {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 2.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .ticker-item::after {
+      content: '·';
+      color: var(--amber);
+      font-size: 1.2rem;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION SHARED ── */
+    section {
+      padding: 6rem 4rem;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 4.5vw, 5rem);
+      line-height: 0.95;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .section-divider {
+      width: 3rem;
+      height: 2px;
+      background: var(--amber);
+      margin: 1.5rem 0;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    /* REPLACE PLACEHOLDER WITH <img src="your-photo.jpg"> */
+    .about-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-photo-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(245,166,35,0.015) 2px,
+        rgba(245,166,35,0.015) 4px
+      );
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(15%) brightness(0.85);
+      display: block;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--amber);
+      color: var(--bg);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.6rem 1rem;
+      font-weight: 600;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      margin-top: 2.5rem;
+      border: 1px solid var(--border);
+    }
+
+    .stat {
+      background: var(--surface);
+      padding: 1.5rem;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--amber);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* ── SERVICES ── */
+    .services-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .service-card {
+      background: var(--bg);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--amber);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover { background: var(--surface2); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+    .service-card:hover .service-number { color: var(--amber-glow); }
+
+    .service-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── SELECTED WORK ── */
+    .work-section { background: var(--bg); }
+
+    .work-list {
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 2fr 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+      cursor: default;
+    }
+
+    .work-item:hover { padding-left: 1rem; }
+
+    .work-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .work-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      line-height: 1.5;
+    }
+
+    .work-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid var(--amber-dim);
+      padding: 0.3rem 0.7rem;
+      white-space: nowrap;
+    }
+
+    .work-year {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-align: right;
+    }
+
+    /* ── WORK CATEGORIES ── */
+    .work-category-block {
+      margin-top: 3.5rem;
+    }
+
+    .work-category-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--amber-dim);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .work-category-label::before {
+      content: '';
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      background: var(--amber);
+    }
+
+    .work-company-block {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .work-company-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem 0 0.8rem;
+    }
+
+    .work-company-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .work-company-type {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid var(--amber-dim);
+      padding: 0.3rem 0.7rem;
+      white-space: nowrap;
+    }
+
+    .work-company-jobs {
+      padding: 0 0 1.2rem 1.2rem;
+      border-left: 2px solid var(--border);
+      margin-left: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .work-job-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 2rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(34,34,34,0.6);
+    }
+
+    .work-job-item:last-child { border-bottom: none; }
+
+    .work-job-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .work-job-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .work-job-year {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-align: right;
+      white-space: nowrap;
+      margin-top: 0.1rem;
+    }
+
+    .work-company-misc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      padding-bottom: 1rem;
+    }
+
+    /* ── DESKS / SKILLS ── */
+    .skills-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .skill-group-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .desk-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .desk-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      padding: 0.4rem 0.9rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .desk-tag:hover { border-color: var(--amber); color: var(--amber); }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .skill-list li {
+      font-size: 0.92rem;
+      color: var(--muted);
+      display: flex;
+      align-items: baseline;
+      gap: 0.7rem;
+      line-height: 1.5;
+    }
+
+    .skill-list li::before {
+      content: '—';
+      color: var(--amber);
+      flex-shrink: 0;
+      font-size: 0.7rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--bg);
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: 'CONTACT';
+      position: absolute;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28vw;
+      color: var(--surface2);
+      bottom: -4vw;
+      left: -1vw;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 7rem);
+      color: var(--white);
+      line-height: 0.92;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-title span { color: var(--amber); }
+
+    .contact-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 45ch;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.85rem 1.8rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .contact-link:hover { border-color: var(--amber); color: var(--amber); }
+    .contact-link.primary { background: var(--amber); color: var(--bg); border-color: var(--amber); font-weight: 600; }
+    .contact-link.primary:hover { background: #ffc04d; border-color: #ffc04d; color: var(--bg); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface);
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+    }
+
+    .footer-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .footer-loc {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left {
+        padding: 8rem 1.5rem 4rem;
+        background-image: url('herojack.jpg');
+        background-size: cover;
+        background-position: center top;
+        position: relative;
+      }
+      .hero-left::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(11,11,11,0.6) 0%, rgba(11,11,11,0.85) 60%, rgba(11,11,11,1) 100%);
+        z-index: 0;
+      }
+      .hero-left > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      section { padding: 4rem 1.5rem; }
+
+      .about { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      .work-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .work-year { text-align: left; }
+
+      .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+      footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#" class="nav-logo">Jack Cole</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" style="padding: 0;">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Birmingham · Available For Hire</p>
+      <h1 class="hero-title">
+        Sound<br>
+        <span>Engineer</span>
+      </h1>
+      <p class="hero-disciplines">
+        Corporate AV&nbsp;<span class="disc-dot">·</span>&nbsp;Rock &amp; Roll&nbsp;<span class="disc-dot">·</span>&nbsp;Broadcast
+      </p>
+      <p class="hero-sub">
+        Delivering <strong>reliable audio</strong> for live, broadcast, and corporate events.
+        Clients include <strong>Vodafone, BBC, Sky Sports</strong> and <strong>Iconic Auctioneers</strong>.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get In Touch</a>
+        <a href="#work" class="btn-ghost">Selected Work</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <!--
+        ┌─────────────────────────────────────────────────────────────┐
+        │  HERO PHOTO                                                 │
+        │  Replace this placeholder div with:                         │
+        │  <img src="your-photo.jpg" class="hero-photo" alt="Jack Cole" />
+        │  Best: a portrait/action shot, landscape orientation.       │
+        └─────────────────────────────────────────────────────────────┘
+      -->
+      <img src="herojack.jpg" class="hero-photo" alt="Jack Cole" />
+    </div>
+  </section>
+
+  <!-- ── TICKER ── -->
+  <div class="ticker-bar" aria-hidden="true">
+    <div class="ticker-track">
+      <!-- duplicated for seamless loop -->
+      <span class="ticker-item">Vodafone</span>
+      <span class="ticker-item">BBC Question Time</span>
+      <span class="ticker-item">Sky Sports</span>
+      <span class="ticker-item">NEP Group</span>
+      <span class="ticker-item">Iconic Auctioneers</span>
+      <span class="ticker-item">AT Comms</span>
+      <span class="ticker-item">Cloudbass</span>
+      <span class="ticker-item">Aztec</span>
+      <span class="ticker-item">Immersive AV</span>
+      <span class="ticker-item">Glastonbury</span>
+      <span class="ticker-item">Premier League Broadcast</span>
+      <span class="ticker-item">Vodafone</span>
+      <span class="ticker-item">BBC Question Time</span>
+      <span class="ticker-item">Sky Sports</span>
+      <span class="ticker-item">NEP Group</span>
+      <span class="ticker-item">Iconic Auctioneers</span>
+      <span class="ticker-item">AT Comms</span>
+      <span class="ticker-item">Cloudbass</span>
+      <span class="ticker-item">Aztec</span>
+      <span class="ticker-item">Immersive AV</span>
+      <span class="ticker-item">Glastonbury</span>
+      <span class="ticker-item">Premier League Broadcast</span>
+    </div>
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section id="about" style="padding: 6rem 4rem;">
+    <div class="about reveal">
+      <div class="about-photo-wrap">
+        <!--
+          ┌─────────────────────────────────────────────────────────────┐
+          │  ABOUT PHOTO                                                │
+          │  Replace this placeholder div with:                         │
+          │  <div class="about-photo">                                  │
+          │    <img src="your-photo-2.jpg" alt="Jack Cole at work" />   │
+          │  </div>                                                     │
+          │  Best: working at a desk, on stage, or with kit.            │
+          └─────────────────────────────────────────────────────────────┘
+        -->
+        <div class="about-photo">
+          <img src="smilejack.jpg" alt="Jack Cole" style="width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(0.85);display:block;" />
+        </div>
+        <div class="about-badge">Based in Birmingham</div>
+      </div>
+      <div class="about-text">
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">Reliable Audio,<br>Every Time.</h2>
+        <div class="section-divider"></div>
+        <p>
+          I'm Jack — a freelance <strong>Sound Engineer and AV Technician</strong> based in Birmingham. I specialise in live sound, broadcast, and corporate AV across festivals, conferences, and televised productions.
+        </p>
+        <p>
+          I've delivered projects for <strong>Vodafone, BBC Question Time, Premier League football broadcasts and Iconic Auctioneers</strong>, working alongside production companies including AT Comms, Aztec, Immersive AV, NEP Group, and Cloudbass.
+        </p>
+        <p>
+          My main focus is <strong>sound</strong> — FOH, monitors, broadcast, and corporate AV — but I've also developed a strong interest in <strong>AV networking</strong>: Dante routing, VLANs, and AV over IP, which helps me troubleshoot and improve reliability on complex productions.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-num">7+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">FOH</div>
+            <div class="stat-label">Primary Role</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">RF</div>
+            <div class="stat-label">Wireless Systems</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">OB</div>
+            <div class="stat-label">Broadcast Capable</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section id="services" class="services-section">
+    <div class="services-header reveal">
+      <div>
+        <p class="section-label">What I Do</p>
+        <h2 class="section-title">Services</h2>
+      </div>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-number">01</div>
+        <div class="service-title">Live Sound</div>
+        <p class="service-desc">Front of House and monitor mixing across rock &amp; roll, festivals, corporate events, and touring. Comfortable with high stage volumes, difficult acoustics, and demanding schedules.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">02</div>
+        <div class="service-title">Broadcast Audio</div>
+        <p class="service-desc">Sound assist, boom op, and OB patching for televised productions including live sports, political debates, and broadcast events. Clean audio under pressure.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <div class="service-title">Corporate AV</div>
+        <p class="service-desc">Conferences, breakout rooms, hybrid streaming, and theatre-style productions. Reliable operation, client communication, and polished delivery for high-profile brands.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">04</div>
+        <div class="service-title">System Tech</div>
+        <p class="service-desc">EQ, system tuning, speaker alignment, delay management, and gain structure. Focused on getting rooms sounding right before the talent walks in.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">05</div>
+        <div class="service-title">RF & Wireless</div>
+        <p class="service-desc">Sennheiser and Shure multi-channel coordination, frequency planning, and IEM management for busy stages and high-RF environments.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">06</div>
+        <div class="service-title">AV Networking</div>
+        <p class="service-desc">Dante setup and troubleshooting in live environments, VLAN configuration, and AV over IP. Practical experience integrating IT and AV systems on productions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SELECTED WORK ── -->
+  <section id="work" class="work-section">
+    <div class="reveal">
+      <p class="section-label">Portfolio</p>
+      <h2 class="section-title">Selected Work</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- OB -->
+    <div class="work-category-block reveal">
+      <div class="work-category-label">Outside Broadcast</div>
+
+      <!-- QTV -->
+      <div class="work-company-block">
+        <div class="work-company-header">
+          <div class="work-company-name">QTV</div>
+          <div class="work-company-type">OB · Broadcast</div>
+        </div>
+        <div class="work-company-jobs">
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">Rugby League — Nationwide Sound Assist</div>
+              <div class="work-job-desc">Sound assist across nationwide rugby league productions. On-set audio support ensuring clean capture for broadcast output.</div>
+            </div>
+            <div class="work-job-year">Ongoing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cloudbass -->
+      <div class="work-company-block">
+        <div class="work-company-header">
+          <div class="work-company-name">Cloudbass</div>
+          <div class="work-company-type">OB · Broadcast</div>
+        </div>
+        <div class="work-company-jobs">
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">Premier League Football — Sound Assist</div>
+              <div class="work-job-desc">Nationwide sound assist on live Premier League coverage, supporting broadcast audio teams on high-profile match days.</div>
+            </div>
+            <div class="work-job-year">Ongoing</div>
+          </div>
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">British Seniors Snooker — Sound Assist</div>
+              <div class="work-job-desc">Live broadcast sound assist for televised snooker coverage. Precision audio work in a quiet, high-pressure broadcast environment.</div>
+            </div>
+            <div class="work-job-year">Dec 2025</div>
+          </div>
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">BBC Question Time — Sound Assist</div>
+              <div class="work-job-desc">Ongoing sound assist and boom operator on the nationally-televised political programme. Highlight: the 2024 UK General Election Leaders' Special — live, high-pressure broadcast with no margin for error.</div>
+            </div>
+            <div class="work-job-year">Ongoing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEP Group -->
+      <div class="work-company-block">
+        <div class="work-company-header">
+          <div class="work-company-name">NEP Group</div>
+          <div class="work-company-type">OB · Broadcast</div>
+        </div>
+        <div class="work-company-jobs">
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">Premier League & Championship Football — Sound Assist</div>
+              <div class="work-job-desc">Patching and sound support for outside broadcast operations on top-flight and championship football. Nationwide coverage, demanding timelines, and high broadcast standards.</div>
+            </div>
+            <div class="work-job-year">Ongoing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORPORATE AV -->
+    <div class="work-category-block reveal">
+      <div class="work-category-label">Corporate AV</div>
+
+      <!-- JaMa Productions -->
+      <div class="work-company-block">
+        <div class="work-company-header">
+          <div class="work-company-name">JaMa Productions</div>
+          <div class="work-company-type">Corporate AV</div>
+        </div>
+        <div class="work-company-jobs">
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">Iconic Auctioneers — Nationwide AV Engineer</div>
+              <div class="work-job-desc">Perma-lance AV engineer for Iconic Auctioneers' high-profile live automotive auctions across the UK. Audio clarity across live and streamed settings, ongoing relationship.</div>
+            </div>
+            <div class="work-job-year">Ongoing</div>
+          </div>
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">Vodafone @ Glastonbury — AV Technician</div>
+              <div class="work-job-desc">Two consecutive years overseeing AV across Vodafone's exclusive VIP area and Charge &amp; Connect lounge at Glastonbury Festival. Full-week deployment managing guest-facing AV including DJ build for the VIP retreat.</div>
+            </div>
+            <div class="work-job-year">2024 – 2025</div>
+          </div>
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">Brighton Pride — AV Technician</div>
+              <div class="work-job-desc">Onsite AV support across two years at one of the UK's largest Pride events, delivering reliable live event production in a large-scale outdoor environment.</div>
+            </div>
+            <div class="work-job-year">2024 – 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other companies -->
+      <div class="work-company-block">
+        <div class="work-company-header">
+          <div class="work-company-name">Also Working With</div>
+          <div class="work-company-type">Corporate AV</div>
+        </div>
+        <div class="work-company-jobs">
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">Aztec AV &nbsp;·&nbsp; AT Communications &nbsp;·&nbsp; Immersive AV &nbsp;·&nbsp; Sterling Event Group &nbsp;·&nbsp; Eventurous</div>
+              <div class="work-job-desc">Conferences, hybrid events, breakout rooms, theatre-style productions and corporate shows for a range of clients. Reliable AV operation, strong client communication, and polished delivery across brands and venues nationwide.</div>
+            </div>
+            <div class="work-job-year">Ongoing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOCAL ROCK & ROLL -->
+    <div class="work-category-block reveal">
+      <div class="work-category-label">Local Rock &amp; Roll</div>
+
+      <div class="work-company-block">
+        <div class="work-company-header">
+          <div class="work-company-name">Birmingham Live Venues</div>
+          <div class="work-company-type">FOH · Monitors</div>
+        </div>
+        <div class="work-company-jobs">
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">FOH, Monitors &amp; Patch — Small Venue Circuit</div>
+              <div class="work-job-desc">Mixing FOH and monitors, running patch for bands and touring acts across Birmingham's small venue circuit — including The Hare &amp; Hounds, The Castle &amp; Falcon, and The Victoria. Tight changeovers, varied acoustics, and real-world mixing in the trenches.</div>
+            </div>
+            <div class="work-job-year">Ongoing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MISC -->
+    <div class="work-category-block reveal">
+      <div class="work-category-label">Previous Roles</div>
+
+      <div class="work-company-block">
+        <div class="work-company-header">
+          <div class="work-company-name">Square One / Coventry University</div>
+          <div class="work-company-type">In-House Tech</div>
+        </div>
+        <div class="work-company-jobs">
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">In-House AV Technician</div>
+              <div class="work-job-desc">Former resident technician for Square One at Coventry University. Day-to-day AV setup, event support, and venue management for a busy campus entertainment venue.</div>
+            </div>
+            <div class="work-job-year">Former</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-company-block">
+        <div class="work-company-header">
+          <div class="work-company-name">Warwickshire Cricket</div>
+          <div class="work-company-type">Live Streaming</div>
+        </div>
+        <div class="work-company-jobs">
+          <div class="work-job-item">
+            <div>
+              <div class="work-job-title">In-House Technician — County Cricket Live Streaming</div>
+              <div class="work-job-desc">Technical support for live streaming of county cricket fixtures. End-to-end broadcast operation for a professional sporting organisation.</div>
+            </div>
+            <div class="work-job-year">Former</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section id="skills" class="skills-section">
+    <div class="reveal">
+      <p class="section-label">Toolkit</p>
+      <h2 class="section-title">Skills & Consoles</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="skills-grid reveal">
+      <div>
+        <p class="skill-group-title">Consoles I work with confidently</p>
+        <div class="desk-list">
+          <span class="desk-tag">Allen &amp; Heath SQ5/6/7</span>
+          <span class="desk-tag">Allen &amp; Heath Avantis</span>
+          <span class="desk-tag">Allen &amp; Heath dLive</span>
+          <span class="desk-tag">Yamaha QL2</span>
+          <span class="desk-tag">Behringer Wing</span>
+          <span class="desk-tag">X32 / M32</span>
+          <span class="desk-tag">Soundcraft Vi Series</span>
+          <span class="desk-tag">Analogue</span>
+        </div>
+
+        <p class="skill-group-title" style="margin-top:2rem;">Networking & Systems</p>
+        <ul class="skill-list">
+          <li>Dante setup and troubleshooting in live environments</li>
+          <li>VLAN separation and AV over IP</li>
+          <li>UniFi, GL.iNet routers, Synology NAS</li>
+          <li>Dante routing in corporate AV, device isolation, redundancy</li>
+        </ul>
+      </div>
+      <div>
+        <p class="skill-group-title">Core Sound Skills</p>
+        <ul class="skill-list">
+          <li><strong style="color:var(--text)">FOH</strong> — confident mixing across rock &amp; roll, outdoor, and corporate</li>
+          <li><strong style="color:var(--text)">Monitors</strong> — IEM and wedge mixes in demanding live settings</li>
+          <li><strong style="color:var(--text)">System Tech</strong> — EQ, tuning, delay alignment, gain structure</li>
+          <li><strong style="color:var(--text)">Broadcast Audio</strong> — sound assist, boom op, OB patching</li>
+          <li><strong style="color:var(--text)">RF &amp; Wireless</strong> — Sennheiser / Shure coordination, multi-channel</li>
+          <li><strong style="color:var(--text)">Corporate AV</strong> — conferences, hybrid streaming, breakout rooms</li>
+          <li><strong style="color:var(--text)">Show Ops</strong> — advancing, patch management, client comms</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="contact-section">
+    <div class="contact-inner" style="padding: 0 4rem; width: 100%;">
+      <div class="reveal">
+        <h2 class="contact-title">
+          Let's Work<br>
+          <span>Together.</span>
+        </h2>
+        <p class="contact-desc">
+          Available for live events, broadcast productions, and corporate AV. Send a Teamtrack link or just say hello — I'll get back to you quickly.
+        </p>
+        <div class="contact-links">
+          <a href="/cdn-cgi/l/email-protection#ee868b828281ae8d978c8b9c8d81828bc08d81c09b85" class="contact-link primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            <span class="__cf_email__" data-cfemail="2e464b4242416e4d574c4b5c4d41424b004d41005b45">[email&#160;protected]</span>
+          </a>
+          <a href="https://www.linkedin.com/in/jack-cole-91a29a213" target="_blank" rel="noopener" class="contact-link">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.instagram.com/jackattack96" target="_blank" rel="noopener" class="contact-link">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span class="footer-logo">Jack Cole</span>
+    <span class="footer-text">© 2025 Jack Cole · Freelance Sound Engineer & AV Technician</span>
+    <span class="footer-loc">📍 Birmingham, UK</span>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      }),
+      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+    );
+    reveals.forEach(el => observer.observe(el));
+    // Fallback: show all after 2s in case observer doesn't fire
+    setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 2000);
+  </script>
+</body>
+</html>
