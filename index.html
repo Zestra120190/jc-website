@@ -2,1387 +2,1412 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Jack Cole — Freelance Sound Engineer & AV Technician</title>
+  <meta name="description" content="Jack Cole — freelance sound engineer and AV technician in Birmingham. Live sound, broadcast audio and corporate AV." />
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="Jack Cole" />
   <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#000000" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Inter only fills in where the system font isn't SF (Windows / Android) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js')</script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0b0b0b;
-      --surface: #111111;
-      --surface2: #181818;
-      --border: #222222;
+      --bg: #ffffff;
+      --bg-alt: #f5f5f7;
+      --ink: #1d1d1f;
+      --ink-2: #6e6e73;
+      --ink-3: #86868b;
+      --hair: rgba(0, 0, 0, 0.08);
+
+      --dark: #000000;
+      --dark-tile: #161617;
+      --dark-tile-2: #1d1d1f;
+      --dark-ink: #f5f5f7;
+      --dark-ink-2: #a1a1a6;
+      --dark-hair: rgba(255, 255, 255, 0.1);
+
       --amber: #f5a623;
-      --amber-dim: #c4811a;
-      --amber-glow: rgba(245, 166, 35, 0.12);
-      --text: #e8e2d9;
-      --muted: #7a7268;
-      --white: #ffffff;
+      --amber-hi: #ffb84d;
+      --amber-ink: #a35400;          /* amber that passes contrast on white */
+      --amber-grad: linear-gradient(95deg, #ffd27a 0%, #f5a623 45%, #ff8a1f 100%);
+
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+      /* Critically damped spring (damping 1.0, response 0.4s), sampled for CSS */
+      --spring: linear(0, 0.0596, 0.186, 0.3294, 0.4656, 0.584, 0.6819, 0.7601, 0.821, 0.8677, 0.9029, 0.9292, 0.9487, 0.963, 0.9734, 0.9809, 0.9864, 0.9903, 0.9931, 0.9951, 0.9966, 0.9976, 0.9983, 0.9988, 1);
+      --spring-dur: 0.6s;
+
+      --gutter: max(22px, env(safe-area-inset-left));
+      --r-tile: 28px;
+      --r-card: 18px;
     }
 
-    html { scroll-behavior: smooth; }
-
+    html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; scroll-padding-top: 52px; }
     body {
       background: var(--bg);
-      color: var(--text);
-      font-family: 'Barlow', sans-serif;
-      font-weight: 300;
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.47;
+      letter-spacing: -0.022em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
       overflow-x: hidden;
-      cursor: default;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; letter-spacing: inherit; background: none; border: 0; cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 6px; }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 var(--gutter); }
+    .section { padding: 7.5rem 0; }
+    .section.alt { background: var(--bg-alt); }
+    .dark { background: var(--dark); color: var(--dark-ink); }
+
+    /* ── TYPE — tracking & leading change with size ── */
+    .t-hero {
+      font-family: var(--font-display);
+      font-size: clamp(3.25rem, 9vw, 6.5rem);
+      line-height: 1.03;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+    }
+    .t-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      line-height: 1.07;
+      letter-spacing: -0.009em;
+      font-weight: 700;
+    }
+    .t-h3 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      line-height: 1.14;
+      letter-spacing: 0.007em;
+      font-weight: 600;
+    }
+    .t-lead {
+      font-size: clamp(1.1875rem, 2vw, 1.3125rem);
+      line-height: 1.38;
+      letter-spacing: 0.011em;
+      font-weight: 400;
+    }
+    .t-eyebrow {
+      font-size: 1.3125rem;
+      line-height: 1.19;
+      letter-spacing: 0.011em;
+      font-weight: 600;
+    }
+    .t-hero, .t-h2, .t-h3, .t-eyebrow { text-wrap: balance; }
+    .t-lead { text-wrap: pretty; }
+    .muted { color: var(--ink-2); }
+    .dark .muted { color: var(--dark-ink-2); }
+    .grad-text {
+      background: var(--amber-grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    /* ── NOISE OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.4;
+    /* ── BUTTONS — feedback on press, instantly ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: 44px;
+      padding: 0.7rem 1.4rem;
+      border-radius: 980px;
+      font-size: 1.0625rem;
+      font-weight: 500;
+      letter-spacing: -0.022em;
+      white-space: nowrap;
+      -webkit-user-select: none; user-select: none;
+      transition: background 0.2s ease, color 0.2s ease, transform var(--spring-dur) var(--spring);
     }
+    .btn:active { transform: scale(0.96); transition: transform 100ms ease-out; }
+    .btn-fill { background: var(--amber); color: #1d1d1f; }
+    .btn-fill:hover { background: var(--amber-hi); }
+    .btn-tint { background: rgba(0,0,0,0.05); color: var(--ink); }
+    .btn-tint:hover { background: rgba(0,0,0,0.08); }
+    .dark .btn-tint { background: rgba(255,255,255,0.1); color: var(--dark-ink); }
+    .dark .btn-tint:hover { background: rgba(255,255,255,0.16); }
+    .link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.15rem;
+      min-height: 44px;
+      color: var(--amber-ink);
+      font-size: 1.0625rem;
+    }
+    .dark .link { color: var(--amber); }
+    .link:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .link::after { content: '›'; font-size: 1.25em; line-height: 1; transform: translateY(-0.04em); margin-left: 0.15rem; }
 
-    /* ── NAV ── */
-    nav {
+    /* ── NAV — floating translucent layer, adapts to what's under it ── */
+    .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
+      height: 52px;
+      color: var(--ink);
+      transition: color 0.3s ease;
+    }
+    .nav::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.72);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      backdrop-filter: blur(20px) saturate(180%);
+      transition: background 0.3s ease;
+    }
+    /* Scroll edge: a soft fade where content meets the bar, not a 1px rule */
+    .nav::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; top: 100%;
+      height: 14px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.06), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .nav.scrolled::after { opacity: 1; }
+    .nav.on-dark { color: var(--dark-ink); }
+    .nav.on-dark::before { background: rgba(22,22,23,0.72); }
+    .nav.on-dark::after { background: linear-gradient(to bottom, rgba(0,0,0,0.35), transparent); }
+    .nav-inner {
+      position: relative;
+      height: 100%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 1.4rem 2.5rem;
-      background: linear-gradient(to bottom, rgba(11,11,11,0.95) 0%, transparent 100%);
-      backdrop-filter: blur(4px);
+      justify-content: space-between;
     }
-
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
-      letter-spacing: 0.12em;
-      color: var(--amber);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.2rem;
-      list-style: none;
-    }
-
+    .nav-title { font-family: var(--font-display); font-size: 1.3125rem; font-weight: 600; letter-spacing: 0.011em; }
+    .nav-right { display: flex; align-items: center; gap: 1.75rem; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
     .nav-links a {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-size: 0.75rem;
+      letter-spacing: -0.01em;
+      opacity: 0.72;
+      transition: opacity 0.2s ease;
     }
-    .nav-links a:hover { color: var(--amber); }
-
-    .nav-cta {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--amber) !important;
-      border: 1px solid var(--amber-dim);
-      padding: 0.45rem 1.1rem;
-      transition: background 0.2s, color 0.2s !important;
-    }
-    .nav-cta:hover { background: var(--amber) !important; color: var(--bg) !important; }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 4rem 5rem 4rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 1.2rem;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.3s forwards;
-    }
-
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4.5rem, 8vw, 9rem);
-      line-height: 0.92;
-      letter-spacing: 0.02em;
-      color: var(--white);
-      opacity: 0;
-      animation: fadeUp 0.8s 0.5s forwards;
-    }
-
-    .hero-title span {
-      color: var(--amber);
-      display: block;
-    }
-
-    .hero-disciplines {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(1.1rem, 2vw, 1.6rem);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--white);
-      font-weight: 700;
-      margin-top: 1rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.65s forwards;
-    }
-
-    .disc-dot {
-      color: var(--amber);
+    .nav-links a:hover, .nav-links a.current { opacity: 1; }
+    .nav .btn {
+      min-height: 0;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.75rem;
+      letter-spacing: -0.01em;
       font-weight: 400;
     }
 
-    .disc-broadcast {
-      color: var(--amber);
-      font-weight: 600;
-    }
-
-    .hero-sub {
-      margin-top: 1.8rem;
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 36ch;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.75s forwards;
-    }
-
-    .hero-sub strong { color: var(--text); font-weight: 500; }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.95s forwards;
-    }
-
-    .btn-primary {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      background: var(--amber);
-      color: var(--bg);
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .btn-primary:hover { background: #ffc04d; transform: translateY(-2px); }
-
-    .btn-ghost {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s, transform 0.2s;
-    }
-    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
-
-    /* ── HERO RIGHT — PHOTO PLACEHOLDER ── */
-    .hero-right {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-photo {
-      width: 100%;
-      height: 100vh;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      filter: grayscale(20%) brightness(0.75);
-    }
-
-    /* REPLACE THIS DIV WITH AN <img> TAG — see comment below */
-    .hero-photo-placeholder {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(160deg, #1a1a1a 0%, #0e0e0e 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      border-left: 1px solid var(--border);
-    }
-
-    .placeholder-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 2px dashed var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .placeholder-icon svg { opacity: 0.3; }
-
-    .placeholder-text {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.5;
-      text-align: center;
-      line-height: 1.8;
-    }
-
-    .hero-right::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, var(--bg) 0%, transparent 15%),
-                  linear-gradient(to top, var(--bg) 0%, transparent 20%);
-      pointer-events: none;
-    }
-
-
-    /* ── CLIENTS TICKER ── */
-    .ticker-bar {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-      padding: 1rem 0;
-      background: var(--surface);
-    }
-
-    .ticker-track {
-      display: flex;
-      gap: 0;
-      animation: ticker 20s linear infinite;
-      white-space: nowrap;
-    }
-
-    .ticker-item {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 0 2.5rem;
+    /* ── HERO ── */
+    .hero { padding: calc(52px + 5.5rem) 0 0; text-align: center; overflow: hidden; }
+    .chip {
       display: inline-flex;
       align-items: center;
-      gap: 2.5rem;
+      gap: 0.55rem;
+      padding: 0.4rem 0.85rem 0.4rem 0.7rem;
+      border-radius: 980px;
+      font-size: 0.875rem;
+      letter-spacing: -0.016em;
+      font-weight: 500;
+      background: rgba(0,0,0,0.05);
     }
-
-    .ticker-item::after {
-      content: '·';
-      color: var(--amber);
-      font-size: 1.2rem;
+    .dark .chip { background: rgba(255,255,255,0.08); color: var(--dark-ink); }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #30d158;
+      box-shadow: 0 0 0 3px rgba(48,209,88,0.2);
     }
-
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+    .hero .chip { margin-bottom: 1.75rem; }
+    .hero .t-eyebrow { color: var(--amber); margin-bottom: 0.75rem; }
+    .hero .t-lead { max-width: 34em; margin: 1.5rem auto 0; }
+    .hero-ctas { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 2.25rem; flex-wrap: wrap; }
+    .hero-media {
+      margin: 4.5rem auto 0;
+      max-width: 1240px;
+      padding: 0 var(--gutter);
+      transform-origin: 50% 0;
+      will-change: transform;
     }
-
-    /* ── SECTION SHARED ── */
-    section {
-      padding: 6rem 4rem;
-    }
-
-    .section-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.8rem, 4.5vw, 5rem);
-      line-height: 0.95;
-      color: var(--white);
-      letter-spacing: 0.02em;
-    }
-
-    .section-divider {
-      width: 3rem;
-      height: 2px;
-      background: var(--amber);
-      margin: 1.5rem 0;
-    }
-
-    /* ── ABOUT ── */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-    }
-
-    .about-photo-wrap {
-      position: relative;
-    }
-
-    /* REPLACE PLACEHOLDER WITH <img src="your-photo.jpg"> */
-    .about-photo-placeholder {
+    .hero-media img {
       width: 100%;
-      aspect-ratio: 3/4;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-photo-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(245,166,35,0.015) 2px,
-        rgba(245,166,35,0.015) 4px
-      );
-    }
-
-    .about-photo img {
-      width: 100%;
-      height: 100%;
+      aspect-ratio: 1485 / 835;
       object-fit: cover;
-      filter: grayscale(15%) brightness(0.85);
-      display: block;
+      border-radius: var(--r-tile) var(--r-tile) 0 0;
     }
-
-    .about-badge {
-      position: absolute;
-      bottom: -1.5rem;
-      right: -1.5rem;
-      background: var(--amber);
-      color: var(--bg);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 0.6rem 1rem;
-      font-weight: 600;
-    }
-
-    .about-text p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-    }
-
-    .about-text p strong { color: var(--text); font-weight: 500; }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      margin-top: 2.5rem;
-      border: 1px solid var(--border);
-    }
-
-    .stat {
-      background: var(--surface);
-      padding: 1.5rem;
-    }
-
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.8rem;
-      color: var(--amber);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.3rem;
-    }
-
-    /* ── SERVICES ── */
-    .services-section {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .services-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 3.5rem;
-    }
-
-    .services-grid {
+    .disciplines {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
     }
-
-    .service-card {
-      background: var(--bg);
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
+    .disciplines > div {
+      background: var(--dark-tile);
+      padding: 1.75rem 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.875rem;
+      letter-spacing: -0.016em;
+      color: var(--dark-ink-2);
     }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--amber);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-
-    .service-card:hover { background: var(--surface2); }
-    .service-card:hover::before { transform: scaleX(1); }
-
-    .service-number {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 4rem;
-      color: var(--border);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-      transition: color 0.3s;
-    }
-    .service-card:hover .service-number { color: var(--amber-glow); }
-
-    .service-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.4rem;
+    .disciplines > div:first-child { border-bottom-left-radius: var(--r-tile); }
+    .disciplines > div:last-child { border-bottom-right-radius: var(--r-tile); }
+    .disciplines > div + div { box-shadow: inset 1px 0 0 var(--dark-hair); }
+    .disciplines strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.3125rem;
+      letter-spacing: 0.011em;
       font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--text);
-      margin-bottom: 0.9rem;
-    }
-
-    .service-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* ── SELECTED WORK ── */
-    .work-section { background: var(--bg); }
-
-    .work-list {
-      margin-top: 3rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .work-item {
-      display: grid;
-      grid-template-columns: 2fr 1fr auto;
-      align-items: center;
-      gap: 2rem;
-      padding: 1.8rem 0;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
-      cursor: default;
-    }
-
-    .work-item:hover { padding-left: 1rem; }
-
-    .work-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--text);
-      text-transform: uppercase;
-    }
-
-    .work-sub {
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
-      line-height: 1.5;
-    }
-
-    .work-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--amber);
-      border: 1px solid var(--amber-dim);
-      padding: 0.3rem 0.7rem;
-      white-space: nowrap;
-    }
-
-    .work-year {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-align: right;
-    }
-
-    /* ── WORK CATEGORIES ── */
-    .work-category-block {
-      margin-top: 3.5rem;
-    }
-
-    .work-category-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 0;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--amber-dim);
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .work-category-label::before {
-      content: '';
-      display: inline-block;
-      width: 0.5rem;
-      height: 0.5rem;
-      background: var(--amber);
-    }
-
-    .work-company-block {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .work-company-header {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 2rem;
-      padding: 1.5rem 0 0.8rem;
-    }
-
-    .work-company-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 0.04em;
-      color: var(--white);
-      line-height: 1;
-    }
-
-    .work-company-type {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--amber);
-      border: 1px solid var(--amber-dim);
-      padding: 0.3rem 0.7rem;
-      white-space: nowrap;
-    }
-
-    .work-company-jobs {
-      padding: 0 0 1.2rem 1.2rem;
-      border-left: 2px solid var(--border);
-      margin-left: 0.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .work-job-item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: start;
-      gap: 2rem;
-      padding: 0.7rem 0;
-      border-bottom: 1px solid rgba(34,34,34,0.6);
-    }
-
-    .work-job-item:last-child { border-bottom: none; }
-
-    .work-job-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text);
+      color: var(--dark-ink);
       margin-bottom: 0.2rem;
     }
+    .hero-bottom { height: 7.5rem; }
 
-    .work-job-desc {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .work-job-year {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-align: right;
-      white-space: nowrap;
-      margin-top: 0.1rem;
-    }
-
-    .work-company-misc {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
-      padding-bottom: 1rem;
-    }
-
-    /* ── DESKS / SKILLS ── */
-    .skills-section {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      margin-top: 3rem;
-    }
-
-    .skill-group-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 1.2rem;
-      padding-bottom: 0.7rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .desk-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .desk-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      padding: 0.4rem 0.9rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .desk-tag:hover { border-color: var(--amber); color: var(--amber); }
-
-    .skill-list {
+    /* ── CLIENTS ── */
+    .clients { text-align: center; padding: 5.5rem 0; }
+    .clients .t-eyebrow { color: var(--ink-2); font-size: 1.0625rem; letter-spacing: -0.022em; }
+    .client-list {
       list-style: none;
       display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem 2.5rem;
+      margin-top: 2rem;
+    }
+    .client-list li {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+      font-weight: 600;
+      letter-spacing: 0.007em;
+      color: #424245;
     }
 
-    .skill-list li {
-      font-size: 0.92rem;
-      color: var(--muted);
-      display: flex;
-      align-items: baseline;
-      gap: 0.7rem;
-      line-height: 1.5;
-    }
-
-    .skill-list li::before {
-      content: '—';
-      color: var(--amber);
-      flex-shrink: 0;
-      font-size: 0.7rem;
-    }
-
-    /* ── CONTACT ── */
-    .contact-section {
-      background: var(--bg);
-      min-height: 60vh;
-      display: flex;
-      align-items: center;
+    /* ── HIGHLIGHTS — momentum gallery ── */
+    .hl-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 2.5rem; }
+    .hl-track {
       position: relative;
-      overflow: hidden;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: max(var(--gutter), calc((100% - 1080px) / 2 + var(--gutter)));
+      scrollbar-width: none;
+      cursor: grab;
     }
-
-    .contact-section::before {
-      content: 'CONTACT';
+    .hl-track::-webkit-scrollbar { display: none; }
+    .hl-track.grabbing { cursor: grabbing; -webkit-user-select: none; user-select: none; }
+    .hl-rail {
+      display: flex;
+      gap: 1.25rem;
+      width: max-content;
+      padding: 0.5rem max(var(--gutter), calc((100% - 1080px) / 2 + var(--gutter))) 1.5rem;
+      will-change: transform;
+    }
+    .hl-card {
+      position: relative;
+      flex: 0 0 auto;
+      width: min(372px, 78vw);
+      height: min(520px, 112vw);
+      border-radius: var(--r-tile);
+      padding: 2.25rem 2rem;
+      scroll-snap-align: start;
+      overflow: hidden;
+      color: var(--dark-ink);
+      background: var(--dark-tile);
+      display: flex;
+      flex-direction: column;
+    }
+    .hl-card::before {
+      content: '';
       position: absolute;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28vw;
-      color: var(--surface2);
-      bottom: -4vw;
-      left: -1vw;
-      line-height: 1;
+      inset: 0;
+      background: radial-gradient(120% 70% at 100% 100%, rgba(245,166,35,0.35), transparent 60%);
       pointer-events: none;
-      user-select: none;
+    }
+    .hl-card:nth-child(2)::before { background: radial-gradient(120% 70% at 0% 100%, rgba(255,138,31,0.32), transparent 60%); }
+    .hl-card:nth-child(3)::before { background: radial-gradient(100% 60% at 50% 110%, rgba(255,210,122,0.28), transparent 65%); }
+    .hl-card:nth-child(4)::before { background: radial-gradient(120% 80% at 100% 0%, rgba(245,166,35,0.3), transparent 60%); }
+    .hl-card:nth-child(5)::before { background: radial-gradient(120% 70% at 0% 0%, rgba(255,138,31,0.26), transparent 60%); }
+    .hl-card:nth-child(6)::before { background: radial-gradient(130% 70% at 50% 100%, rgba(245,166,35,0.3), transparent 60%); }
+    .hl-eyebrow { position: relative; font-size: 0.875rem; font-weight: 600; letter-spacing: -0.016em; color: var(--amber); }
+    .hl-title {
+      position: relative;
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      line-height: 1.14;
+      letter-spacing: 0.007em;
+      font-weight: 600;
+      margin-top: 0.4rem;
+    }
+    .hl-desc { position: relative; font-size: 1.0625rem; color: var(--dark-ink-2); margin-top: 0.6rem; }
+    .hl-icon { position: relative; margin-top: auto; color: var(--amber); }
+    .hl-controls { display: flex; gap: 0.75rem; }
+    .round-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: rgba(210,210,215,0.64);
+      color: rgba(0,0,0,0.56);
+      transition: background 0.2s ease, opacity 0.2s ease, transform var(--spring-dur) var(--spring);
+    }
+    .round-btn:hover { background: rgba(223,223,227,0.7); color: rgba(0,0,0,0.64); }
+    .round-btn:active { transform: scale(0.92); transition: transform 100ms ease-out; }
+    .round-btn:disabled { opacity: 0.42; cursor: default; transform: none; }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center; }
+    .about-photo { border-radius: var(--r-tile); overflow: hidden; aspect-ratio: 4 / 5; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 45% center; }
+    .about-copy .t-h2 { margin: 0.4rem 0 1.5rem; }
+    .about-copy p + p { margin-top: 1rem; }
+    .about-copy p { color: var(--ink-2); }
+    .about-copy strong { color: var(--ink); font-weight: 600; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--hair); }
+    .stat-num { font-family: var(--font-display); font-size: 2.5rem; line-height: 1.1; font-weight: 700; letter-spacing: -0.003em; }
+    .stat-label { font-size: 0.875rem; letter-spacing: -0.016em; color: var(--ink-2); margin-top: 0.15rem; }
+    .eyebrow-sm { font-size: 1.0625rem; font-weight: 600; color: var(--amber-ink); }
+
+    /* ── SERVICES — bento ── */
+    .center-head { text-align: center; max-width: 40rem; margin: 0 auto 3.5rem; }
+    .center-head .t-lead { margin-top: 1rem; }
+    .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .tile {
+      background: var(--bg-alt);
+      border-radius: var(--r-tile);
+      padding: 2.25rem 2rem 2.5rem;
+    }
+    .tile-icon { color: var(--amber-ink); margin-bottom: 1.5rem; }
+    .tile h3 { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.17; letter-spacing: 0.009em; font-weight: 600; margin-bottom: 0.6rem; }
+    .tile p { color: var(--ink-2); }
+    .tile.wide { grid-column: span 2; }
+
+    /* ── CREDITS — segmented control ── */
+    .seg {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      width: min(100%, 36rem);
+      margin: 0 auto 3rem;
+      padding: 4px;
+      border-radius: 980px;
+      background: rgba(255,255,255,0.1);
+      touch-action: pan-y;
+      -webkit-user-select: none; user-select: none;
+    }
+    .seg-thumb {
+      position: absolute;
+      top: 4px; bottom: 4px; left: 4px;
+      width: calc((100% - 8px) / 4);
+      border-radius: 980px;
+      background: #3a3a3c;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.25), inset 0 0.5px 0 rgba(255,255,255,0.12);
+      will-change: transform;
+    }
+    .seg button {
+      position: relative;
+      padding: 0.6rem 0.4rem;
+      border-radius: 980px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: -0.016em;
+      color: var(--dark-ink-2);
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+    .seg button[aria-selected="true"] { color: var(--dark-ink); }
+    .seg.dragging button { cursor: grabbing; }
+    .credits-panel[hidden] { display: none; }
+    .credits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; align-items: start; }
+    .co {
+      background: var(--dark-tile);
+      border-radius: var(--r-tile);
+      padding: 2rem 2rem 1.25rem;
+    }
+    .co.wide { grid-column: 1 / -1; }
+    .co-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
+    .co-name { font-family: var(--font-display); font-size: 1.75rem; letter-spacing: 0.007em; font-weight: 600; line-height: 1.14; }
+    .pill {
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      letter-spacing: -0.01em;
+      font-weight: 500;
+      padding: 0.25rem 0.7rem;
+      border-radius: 980px;
+      background: rgba(245,166,35,0.14);
+      color: var(--amber);
+    }
+    .job { display: grid; grid-template-columns: 1fr auto; gap: 0.25rem 1.5rem; padding: 1rem 0; }
+    .job + .job { box-shadow: inset 0 1px 0 var(--dark-hair); }
+    .job-title { font-weight: 600; color: var(--dark-ink); }
+    .job-desc { grid-column: 1; font-size: 0.9375rem; line-height: 1.47; letter-spacing: -0.012em; color: var(--dark-ink-2); }
+    .job-when { grid-column: 2; grid-row: 1; font-size: 0.875rem; color: var(--dark-ink-2); white-space: nowrap; letter-spacing: -0.016em; }
+
+    /* ── KIT ── */
+    .kit { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .kit .tile { background: var(--bg); }
+    .kit .tile.wide { grid-column: 1 / -1; }
+    .kit h3 { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.009em; font-weight: 600; margin-bottom: 1.25rem; }
+    .consoles { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; }
+    .consoles li {
+      padding: 0.55rem 1.1rem;
+      border-radius: 980px;
+      background: var(--bg-alt);
+      font-size: 1rem;
+      font-weight: 500;
       letter-spacing: -0.02em;
     }
+    .checks { list-style: none; display: grid; gap: 0.85rem; }
+    .checks li { display: grid; grid-template-columns: 1.25rem 1fr; gap: 0.75rem; color: var(--ink-2); }
+    .checks li svg { margin-top: 0.2em; color: var(--amber-ink); }
+    .checks strong { color: var(--ink); font-weight: 600; }
 
-    .contact-inner {
-      position: relative;
-      z-index: 2;
-    }
-
-    .contact-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 6vw, 7rem);
-      color: var(--white);
-      line-height: 0.92;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-title span { color: var(--amber); }
-
-    .contact-desc {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 45ch;
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
-    }
-
-    .contact-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text);
-      text-decoration: none;
-      padding: 0.85rem 1.8rem;
-      border: 1px solid var(--border);
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-    }
-
-    .contact-link:hover { border-color: var(--amber); color: var(--amber); }
-    .contact-link.primary { background: var(--amber); color: var(--bg); border-color: var(--amber); font-weight: 600; }
-    .contact-link.primary:hover { background: #ffc04d; border-color: #ffc04d; color: var(--bg); }
+    /* ── CONTACT ── */
+    .contact { text-align: center; padding: 9rem 0; }
+    .contact .t-hero { margin: 1.25rem 0 1.25rem; }
+    .contact .t-lead { max-width: 30em; margin: 0 auto; }
+    .contact-ctas { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem 1.25rem; margin-top: 2.5rem; }
+    .contact-addr { margin-top: 1.5rem; font-size: 0.875rem; color: var(--ink-3); letter-spacing: -0.016em; }
 
     /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--surface);
-    }
+    footer { background: var(--bg-alt); font-size: 0.75rem; letter-spacing: -0.01em; color: var(--ink-2); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 1.1rem; padding-bottom: 1.1rem; }
+    footer .rule { border-top: 1px solid var(--hair); }
 
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.12em;
-      color: var(--amber);
-    }
-
-    .footer-text {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .footer-loc {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
+    /* ── REVEAL — spring settle ── */
+    .js .rv { opacity: 0; transform: translateY(32px); }
+    .js .rv.in {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
+      transition: opacity 0.6s ease, transform 0.9s var(--spring);
+      transition-delay: var(--d, 0s);
     }
+
+    /* ── CONTACT SHEET ── */
+    .scrim { position: fixed; inset: 0; background: rgba(0,0,0,0.4); opacity: 0; visibility: hidden; z-index: 200; }
+    .sheet {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      width: min(100%, 30rem);
+      margin-left: max(-50%, -15rem);
+      z-index: 201;
+      background: rgba(255,255,255,0.86);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
+      backdrop-filter: blur(30px) saturate(180%);
+      box-shadow: 0 -10px 50px rgba(0,0,0,0.18);
+      border-radius: 1.5rem 1.5rem 0 0;
+      padding: 0.6rem 1.5rem calc(1.75rem + env(safe-area-inset-bottom));
+      transform: translateY(110%);
+      visibility: hidden;
+      touch-action: none;
+      will-change: transform;
+    }
+    .grabber { width: 36px; height: 5px; border-radius: 3px; background: rgba(0,0,0,0.18); margin: 0 auto 1.5rem; }
+    .sheet .t-h3 { margin: 0.25rem 0 0.5rem; }
+    .sheet p { color: var(--ink-2); margin-bottom: 1.5rem; }
+    .sheet-actions { display: grid; gap: 0.6rem; }
+    .sheet-action {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      width: 100%;
+      min-height: 56px;
+      padding: 0 1.1rem;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.05);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      text-align: left;
+      -webkit-user-select: none; user-select: none;
+      transition: background 0.2s ease, transform var(--spring-dur) var(--spring);
+    }
+    .sheet-action:hover { background: rgba(0,0,0,0.08); }
+    .sheet-action:active { transform: scale(0.97); transition: transform 100ms ease-out; }
+    .sheet-action.primary { background: var(--amber); color: #1d1d1f; }
+    .sheet-action small { margin-left: auto; font-size: 0.875rem; font-weight: 400; color: var(--ink-2); }
+    .sheet-action.primary small { color: rgba(29,29,31,0.7); }
+
+    /* ── TOAST — materializes rather than fades ── */
+    .toast {
+      position: fixed;
+      left: 50%;
+      top: 4.25rem;
+      z-index: 300;
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.15rem;
+      border-radius: 980px;
+      background: rgba(29,29,31,0.82);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      backdrop-filter: blur(20px) saturate(180%);
+      color: #f5f5f7;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      opacity: 0;
+      filter: blur(6px);
+      transform: translate(-50%, -8px) scale(0.92);
+      pointer-events: none;
+      transition: opacity 0.25s ease, filter 0.35s ease, transform var(--spring-dur) var(--spring);
+    }
+    .toast.show { opacity: 1; filter: blur(0); transform: translate(-50%, 0) scale(1); }
+    .toast svg { color: #30d158; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 1.2rem 1.5rem; }
+    @media (max-width: 1068px) {
+      .bento { grid-template-columns: repeat(2, 1fr); }
+      .tile.wide { grid-column: span 2; }
+    }
+    @media (max-width: 834px) {
+      .section { padding: 5.5rem 0; }
       .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo { aspect-ratio: 3 / 2; }
+      .credits-grid, .kit { grid-template-columns: 1fr; }
+      .disciplines { grid-template-columns: 1fr; }
+      .disciplines > div:first-child { border-radius: 0; }
+      .disciplines > div:last-child { border-radius: 0 0 var(--r-tile) var(--r-tile); }
+      .disciplines > div + div { box-shadow: inset 0 1px 0 var(--dark-hair); }
+      .hero-bottom { height: 5.5rem; }
+      .contact { padding: 6.5rem 0; }
+    }
+    @media (max-width: 640px) {
+      .bento { grid-template-columns: 1fr; }
+      .tile.wide { grid-column: auto; }
+      .stats { grid-template-columns: repeat(2, 1fr); row-gap: 1.5rem; }
+      .hl-controls { display: none; }
+      .co { padding: 1.6rem 1.4rem 1rem; }
+      .co-head { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .job { grid-template-columns: 1fr; }
+      .job-when { grid-column: 1; grid-row: auto; }
+      .seg button { font-size: 0.8125rem; padding: 0.55rem 0.2rem; }
+      .seg-long { display: none; }
+      .hero .t-eyebrow { font-size: 1.0625rem; letter-spacing: -0.022em; }
+      .hero-media img { border-radius: 18px 18px 0 0; }
+    }
 
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { display: none; }
-      .hero-left {
-        padding: 8rem 1.5rem 4rem;
-        background-image: url('herojack.jpg');
-        background-size: cover;
-        background-position: center top;
-        position: relative;
-      }
-      .hero-left::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(11,11,11,0.6) 0%, rgba(11,11,11,0.85) 60%, rgba(11,11,11,1) 100%);
-        z-index: 0;
-      }
-      .hero-left > * {
-        position: relative;
-        z-index: 1;
-      }
-
-      section { padding: 4rem 1.5rem; }
-
-      .about { grid-template-columns: 1fr; gap: 3rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
-
-      .work-item { grid-template-columns: 1fr; gap: 0.5rem; }
-      .work-year { text-align: left; }
-
-      .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-
-      footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; text-align: center; }
+    /* ── ACCESSIBILITY ── */
+    @media (prefers-reduced-motion: reduce) {
+      .js .rv { transform: none; }
+      .js .rv.in { transition: opacity 0.3s ease; }
+      .hero-media { transform: none !important; }
+      .toast { transform: translate(-50%, 0); filter: none; }
+    }
+    @media (prefers-reduced-transparency: reduce) {
+      .nav::before { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }
+      .nav.on-dark::before { background: #161617; }
+      .sheet { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }
+      .toast { background: #1d1d1f; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    }
+    @media (prefers-contrast: more) {
+      :root { --ink-2: #3a3a3c; --dark-ink-2: #d1d1d6; --amber-ink: #7a3f00; }
+      .tile, .co { box-shadow: inset 0 0 0 1px currentColor; }
     }
   </style>
 </head>
 <body>
 
   <!-- ── NAV ── -->
-  <nav>
-    <a href="#" class="nav-logo">Jack Cole</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
-    </ul>
-  </nav>
-
-  <!-- ── HERO ── -->
-  <section class="hero" style="padding: 0;">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Birmingham · Available For Hire</p>
-      <h1 class="hero-title">
-        Sound<br>
-        <span>Engineer</span>
-      </h1>
-      <p class="hero-disciplines">
-        Corporate AV&nbsp;<span class="disc-dot">·</span>&nbsp;Rock &amp; Roll&nbsp;<span class="disc-dot">·</span>&nbsp;Broadcast
-      </p>
-      <p class="hero-sub">
-        Delivering <strong>reliable audio</strong> for live, broadcast, and corporate events.
-        Clients include <strong>Vodafone, BBC, TNT Sports</strong> and <strong>Iconic Auctioneers</strong>.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Get In Touch</a>
-        <a href="#work" class="btn-ghost">Selected Work</a>
+  <nav class="nav on-dark" aria-label="Main">
+    <div class="wrap nav-inner">
+      <a href="#top" class="nav-title">Jack Cole</a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#credits">Credits</a></li>
+          <li><a href="#kit">Kit</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-fill" data-sheet>Get in touch</a>
       </div>
     </div>
-    <div class="hero-right">
-      <img src="herojack.jpg" class="hero-photo" alt="Jack Cole" />
-    </div>
-  </section>
+  </nav>
 
-  <!-- ── TICKER ── -->
-  <div class="ticker-bar" aria-hidden="true">
-    <div class="ticker-track">
-      <!-- duplicated for seamless loop -->
-      <span class="ticker-item">Vodafone</span>
-      <span class="ticker-item">BBC Question Time</span>
-      <span class="ticker-item">Sky Sports</span>
-      <span class="ticker-item">NEP Group</span>
-      <span class="ticker-item">Iconic Auctioneers</span>
-      <span class="ticker-item">AT Comms</span>
-      <span class="ticker-item">Cloudbass</span>
-      <span class="ticker-item">Aztec</span>
-      <span class="ticker-item">Immersive AV</span>
-      <span class="ticker-item">Glastonbury</span>
-      <span class="ticker-item">Premier League Broadcast</span>
-      <span class="ticker-item">FA Cup Final — Wembley</span>
-      <span class="ticker-item">Vodafone</span>
-      <span class="ticker-item">BBC Question Time</span>
-      <span class="ticker-item">Sky Sports</span>
-      <span class="ticker-item">TNT Sports</span>
-      <span class="ticker-item">NEP Group</span>
-      <span class="ticker-item">Iconic Auctioneers</span>
-      <span class="ticker-item">AT Comms</span>
-      <span class="ticker-item">Cloudbass</span>
-      <span class="ticker-item">Aztec</span>
-      <span class="ticker-item">Immersive AV</span>
-      <span class="ticker-item">Glastonbury</span>
-      <span class="ticker-item">Premier League Broadcast</span>
-      <span class="ticker-item">FA Cup Final — Wembley</span>
-      <span class="ticker-item">TNT Sports</span>
+  <main id="top">
+
+    <!-- ── HERO ── -->
+    <section class="hero dark" data-theme="dark">
+      <div class="wrap">
+        <div class="rv"><span class="chip"><span class="dot" aria-hidden="true"></span>Available for hire · Birmingham</span></div>
+        <p class="t-eyebrow rv" style="--d:.05s">Freelance Sound Engineer &amp; AV Technician</p>
+        <h1 class="t-hero rv" style="--d:.1s">Reliable audio.<br><span class="grad-text">Every time.</span></h1>
+        <p class="t-lead muted rv" style="--d:.18s">Live sound, broadcast and corporate AV for clients including Vodafone, BBC, TNT Sports and Iconic Auctioneers.</p>
+        <div class="hero-ctas rv" style="--d:.26s">
+          <a href="#contact" class="btn btn-fill" data-sheet>Get in touch</a>
+          <a href="#credits" class="link">See credits</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="herojack.jpg" alt="Jack Cole at a mixing console" width="1485" height="835" />
+      </div>
+      <div class="disciplines">
+        <div><strong>Broadcast</strong>Sound assist, boom op and OB patching</div>
+        <div><strong>Corporate AV</strong>Conferences, hybrid and live events</div>
+        <div><strong>Rock &amp; Roll</strong>FOH, monitors and patch</div>
+      </div>
+      <div class="hero-bottom"></div>
+    </section>
+
+    <!-- ── CLIENTS ── -->
+    <section class="clients alt">
+      <div class="wrap">
+        <p class="t-eyebrow rv">Trusted on productions for</p>
+        <ul class="client-list rv" style="--d:.08s">
+          <li>Vodafone</li>
+          <li>BBC Question Time</li>
+          <li>TNT Sports</li>
+          <li>Sky Sports</li>
+          <li>Premier League</li>
+          <li>FA Cup Final</li>
+          <li>Glastonbury</li>
+          <li>Iconic Auctioneers</li>
+          <li>NEP Group</li>
+          <li>Cloudbass</li>
+          <li>AT Comms</li>
+          <li>Aztec</li>
+          <li>Immersive AV</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── HIGHLIGHTS ── -->
+    <section class="section" aria-labelledby="hl-title" style="padding-bottom: 6rem;">
+      <div class="wrap hl-head rv">
+        <h2 class="t-h2" id="hl-title">The highlights.</h2>
+        <div class="hl-controls">
+          <button class="round-btn" data-hl="-1" aria-label="Previous highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button class="round-btn" data-hl="1" aria-label="Next highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="hl-track rv" style="--d:.08s" tabindex="0" aria-label="Career highlights">
+        <div class="hl-rail">
+          <article class="hl-card">
+            <p class="hl-eyebrow">Gravity Media · TNT Sports</p>
+            <h3 class="hl-title">FA Cup Final 2026.</h3>
+            <p class="hl-desc">Sound assist at Wembley, working close to talent on presenter audio.</p>
+            <svg class="hl-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3"/></svg>
+          </article>
+          <article class="hl-card">
+            <p class="hl-eyebrow">Cloudbass · BBC</p>
+            <h3 class="hl-title">BBC Question Time.</h3>
+            <p class="hl-desc">Ongoing sound assist and boom op — including the 2024 General Election Leaders' Special.</p>
+            <svg class="hl-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg>
+          </article>
+          <article class="hl-card">
+            <p class="hl-eyebrow">NEP Group · Cloudbass</p>
+            <h3 class="hl-title">Premier League.</h3>
+            <p class="hl-desc">Outside broadcast patching and sound support on top-flight football, nationwide.</p>
+            <svg class="hl-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m12 7 4 3-1.5 5h-5L8 10z"/></svg>
+          </article>
+          <article class="hl-card">
+            <p class="hl-eyebrow">JaMa Productions · Vodafone</p>
+            <h3 class="hl-title">Glastonbury.</h3>
+            <p class="hl-desc">Two years overseeing AV for Vodafone's VIP area and Charge &amp; Connect lounge.</p>
+            <svg class="hl-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20 12 4l9 16M12 4v16M8 20l4-7 4 7"/></svg>
+          </article>
+          <article class="hl-card">
+            <p class="hl-eyebrow">JaMa Productions</p>
+            <h3 class="hl-title">Iconic Auctioneers.</h3>
+            <p class="hl-desc">Perma-lance AV engineer for high-profile live automotive auctions across the UK.</p>
+            <svg class="hl-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16h14M3 16v-3l2-5h14l2 5v3M6 16v2M18 16v2"/><circle cx="7.5" cy="13" r="1"/><circle cx="16.5" cy="13" r="1"/></svg>
+          </article>
+          <article class="hl-card">
+            <p class="hl-eyebrow">Birmingham</p>
+            <h3 class="hl-title">The small venue circuit.</h3>
+            <p class="hl-desc">FOH, monitors and patch at The Hare &amp; Hounds, The Castle &amp; Falcon and The Victoria.</p>
+            <svg class="hl-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><circle cx="12" cy="6.5" r="1.5"/></svg>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="section alt">
+      <div class="wrap about-grid">
+        <div class="about-photo rv">
+          <img src="smilejack.jpg" alt="Jack Cole smiling at an event venue" width="1500" height="1000" loading="lazy" />
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow-sm rv">About</p>
+          <h2 class="t-h2 rv" style="--d:.05s">Reliable audio, every time.</h2>
+          <div class="rv" style="--d:.1s">
+            <p>I'm Jack — a freelance <strong>Sound Engineer and AV Technician</strong> based in Birmingham. I specialise in live sound, broadcast, and corporate AV across festivals, conferences, and televised productions.</p>
+            <p>I've delivered projects for <strong>Vodafone, BBC Question Time, TNT Sports, Premier League football broadcasts and Iconic Auctioneers</strong>, working alongside production companies including Gravity Media, AT Comms, Aztec, Immersive AV, NEP Group, and Cloudbass.</p>
+            <p>My main focus is <strong>sound</strong> — FOH, monitors, broadcast, and corporate AV — but I've also developed a strong interest in <strong>AV networking</strong>: Dante routing, VLANs, and AV over IP, which helps me troubleshoot and improve reliability on complex productions.</p>
+          </div>
+          <div class="stats rv" style="--d:.15s">
+            <div><div class="stat-num">7+</div><div class="stat-label">Years experience</div></div>
+            <div><div class="stat-num">FOH</div><div class="stat-label">Primary role</div></div>
+            <div><div class="stat-num">RF</div><div class="stat-label">Wireless systems</div></div>
+            <div><div class="stat-num">OB</div><div class="stat-label">Broadcast capable</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVICES ── -->
+    <section id="services" class="section">
+      <div class="wrap">
+        <div class="center-head">
+          <h2 class="t-h2 rv">What I do.</h2>
+          <p class="t-lead muted rv" style="--d:.05s">From the FOH position to the OB truck — sound first, with the systems knowledge to keep it reliable.</p>
+        </div>
+        <div class="bento">
+          <div class="tile wide rv">
+            <svg class="tile-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 3v18M12 3v18M18 3v18"/><rect x="4" y="13" width="4" height="3" rx="1" fill="currentColor"/><rect x="10" y="6" width="4" height="3" rx="1" fill="currentColor"/><rect x="16" y="10" width="4" height="3" rx="1" fill="currentColor"/></svg>
+            <h3>Live Sound</h3>
+            <p>Front of House and monitor mixing across rock &amp; roll, festivals, corporate events, and touring. Comfortable with high stage volumes, difficult acoustics, and demanding schedules.</p>
+          </div>
+          <div class="tile rv" style="--d:.05s">
+            <svg class="tile-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>
+            <h3>Broadcast Audio</h3>
+            <p>Sound assist, boom op, and OB patching for televised productions including live sports, political debates, and broadcast events. Clean audio under pressure.</p>
+          </div>
+          <div class="tile rv">
+            <svg class="tile-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8"/></svg>
+            <h3>Corporate AV</h3>
+            <p>Conferences, breakout rooms, hybrid streaming, and theatre-style productions. Reliable operation, client communication, and polished delivery for high-profile brands.</p>
+          </div>
+          <div class="tile rv" style="--d:.05s">
+            <svg class="tile-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h3l2-6 3 12 3-9 2 6 2-3h5"/></svg>
+            <h3>System Tech</h3>
+            <p>EQ, system tuning, speaker alignment, delay management, and gain structure. Focused on getting rooms sounding right before the talent walks in.</p>
+          </div>
+          <div class="tile rv" style="--d:.1s">
+            <svg class="tile-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>
+            <h3>RF &amp; Wireless</h3>
+            <p>Sennheiser and Shure multi-channel coordination, frequency planning, and IEM management for busy stages and high-RF environments.</p>
+          </div>
+          <div class="tile wide rv">
+            <svg class="tile-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v5M5 17v-3h14v3"/></svg>
+            <h3>AV Networking</h3>
+            <p>Dante setup and troubleshooting in live environments, VLAN configuration, and AV over IP. Practical experience integrating IT and AV systems on productions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CREDITS ── -->
+    <section id="credits" class="section dark" data-theme="dark">
+      <div class="wrap">
+        <div class="center-head">
+          <h2 class="t-h2 rv">Credits.</h2>
+          <p class="t-lead muted rv" style="--d:.05s">Outside broadcast, corporate AV and live music — with the companies behind them.</p>
+        </div>
+
+        <div class="seg rv" style="--d:.1s" role="tablist" aria-label="Credit categories">
+          <span class="seg-thumb" aria-hidden="true"></span>
+          <button role="tab" id="tab-ob" aria-controls="panel-ob" aria-selected="true">Broadcast</button>
+          <button role="tab" id="tab-corp" aria-controls="panel-corp" aria-selected="false" tabindex="-1">Corporate<span class="seg-long"> AV</span></button>
+          <button role="tab" id="tab-rr" aria-controls="panel-rr" aria-selected="false" tabindex="-1">Rock &amp; Roll</button>
+          <button role="tab" id="tab-prev" aria-controls="panel-prev" aria-selected="false" tabindex="-1">Previous</button>
+        </div>
+
+        <!-- Outside Broadcast -->
+        <div class="credits-panel rv" style="--d:.15s" id="panel-ob" role="tabpanel" aria-labelledby="tab-ob">
+          <div class="credits-grid">
+            <article class="co wide">
+              <div class="co-head"><h3 class="co-name">Gravity Media</h3><span class="pill">OB · Broadcast</span></div>
+              <div class="job">
+                <div class="job-title">FA Cup Final 2026 — Sound Assist (TNT Sports)</div>
+                <div class="job-when">May 2026</div>
+                <p class="job-desc">Sound assist at Wembley Stadium for the FA Cup Final, broadcast live on TNT Sports. Working close to talent handling presenter audio, with responsibilities across patching, troubleshooting, and on-the-ground support throughout the production.</p>
+              </div>
+              <div class="job">
+                <div class="job-title">Misfits Boxing — Sound Assist (DAZN)</div>
+                <div class="job-when">Mar 2026</div>
+                <p class="job-desc">Sound assist on the Misfits Boxing event broadcast live on DAZN, held in Derby. On-set audio support for a high-energy live boxing production.</p>
+              </div>
+              <div class="job">
+                <div class="job-title">Women's Six Nations — Sound Assist</div>
+                <div class="job-when">Apr 2026</div>
+                <p class="job-desc">Sound assist on the Women's Six Nations broadcast, held in Bristol. On-set audio support for a major international rugby union production.</p>
+              </div>
+            </article>
+            <article class="co">
+              <div class="co-head"><h3 class="co-name">Cloudbass</h3><span class="pill">OB · Broadcast</span></div>
+              <div class="job">
+                <div class="job-title">Premier League Football — Sound Assist</div>
+                <div class="job-when">Ongoing</div>
+                <p class="job-desc">Nationwide sound assist on live Premier League coverage, supporting broadcast audio teams on high-profile match days.</p>
+              </div>
+              <div class="job">
+                <div class="job-title">British Seniors Snooker — Sound Assist</div>
+                <div class="job-when">Dec 2025</div>
+                <p class="job-desc">Live broadcast sound assist for televised snooker coverage. Precision audio work in a quiet, high-pressure broadcast environment.</p>
+              </div>
+              <div class="job">
+                <div class="job-title">BBC Question Time — Sound Assist</div>
+                <div class="job-when">Ongoing</div>
+                <p class="job-desc">Ongoing sound assist and boom operator on the nationally-televised political programme. Highlight: the 2024 UK General Election Leaders' Special — live, high-pressure broadcast with no margin for error.</p>
+              </div>
+            </article>
+            <div style="display:grid; gap:1.25rem;">
+              <article class="co">
+                <div class="co-head"><h3 class="co-name">NEP Group</h3><span class="pill">OB · Broadcast</span></div>
+                <div class="job">
+                  <div class="job-title">Premier League &amp; Championship Football — Sound Assist</div>
+                  <div class="job-when">Ongoing</div>
+                  <p class="job-desc">Patching and sound support for outside broadcast operations on top-flight and championship football. Nationwide coverage, demanding timelines, and high broadcast standards.</p>
+                </div>
+              </article>
+              <article class="co">
+                <div class="co-head"><h3 class="co-name">QTV</h3><span class="pill">OB · Broadcast</span></div>
+                <div class="job">
+                  <div class="job-title">Rugby League — Nationwide Sound Assist</div>
+                  <div class="job-when">Ongoing</div>
+                  <p class="job-desc">Sound assist across nationwide rugby league productions. On-set audio support ensuring clean capture for broadcast output.</p>
+                </div>
+                <div class="job">
+                  <div class="job-title">Netball Super League — Nationwide Sound Assist</div>
+                  <div class="job-when">Ongoing</div>
+                  <p class="job-desc">Sound assist across nationwide Netball Super League productions. On-set audio support ensuring clean capture for broadcast output.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- Corporate AV -->
+        <div class="credits-panel" id="panel-corp" role="tabpanel" aria-labelledby="tab-corp" hidden>
+          <div class="credits-grid">
+            <article class="co wide">
+              <div class="co-head"><h3 class="co-name">JaMa Productions</h3><span class="pill">Corporate AV</span></div>
+              <div class="job">
+                <div class="job-title">Iconic Auctioneers — Nationwide AV Engineer</div>
+                <div class="job-when">Ongoing</div>
+                <p class="job-desc">Perma-lance AV engineer for Iconic Auctioneers' high-profile live automotive auctions across the UK. Audio clarity across live and streamed settings, ongoing relationship.</p>
+              </div>
+              <div class="job">
+                <div class="job-title">Vodafone @ Glastonbury — AV Technician</div>
+                <div class="job-when">2024 – 2025</div>
+                <p class="job-desc">Two consecutive years overseeing AV across Vodafone's exclusive VIP area and Charge &amp; Connect lounge at Glastonbury Festival. Full-week deployment managing guest-facing AV including DJ build for the VIP retreat.</p>
+              </div>
+              <div class="job">
+                <div class="job-title">Brighton Pride — AV Technician</div>
+                <div class="job-when">2024 – 2025</div>
+                <p class="job-desc">Onsite AV support across two years at one of the UK's largest Pride events, delivering reliable live event production in a large-scale outdoor environment.</p>
+              </div>
+            </article>
+            <article class="co wide">
+              <div class="co-head"><h3 class="co-name">Also working with</h3><span class="pill">Corporate AV</span></div>
+              <div class="job">
+                <div class="job-title">Aztec AV · AT Communications · Immersive AV · Sterling Event Group · Eventurous</div>
+                <div class="job-when">Ongoing</div>
+                <p class="job-desc">Conferences, hybrid events, breakout rooms, theatre-style productions and corporate shows for a range of clients. Reliable AV operation, strong client communication, and polished delivery across brands and venues nationwide.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Rock & Roll -->
+        <div class="credits-panel" id="panel-rr" role="tabpanel" aria-labelledby="tab-rr" hidden>
+          <div class="credits-grid">
+            <article class="co wide">
+              <div class="co-head"><h3 class="co-name">Birmingham Live Venues</h3><span class="pill">FOH · Monitors</span></div>
+              <div class="job">
+                <div class="job-title">FOH, Monitors &amp; Patch — Small Venue Circuit</div>
+                <div class="job-when">Ongoing</div>
+                <p class="job-desc">Mixing FOH and monitors, running patch for bands and touring acts across Birmingham's small venue circuit — including The Hare &amp; Hounds, The Castle &amp; Falcon, and The Victoria. Tight changeovers, varied acoustics, and real-world mixing in the trenches.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Previous -->
+        <div class="credits-panel" id="panel-prev" role="tabpanel" aria-labelledby="tab-prev" hidden>
+          <div class="credits-grid">
+            <article class="co">
+              <div class="co-head"><h3 class="co-name">Square One / Coventry University</h3><span class="pill">In-House Tech</span></div>
+              <div class="job">
+                <div class="job-title">In-House AV Technician</div>
+                <div class="job-when">Former</div>
+                <p class="job-desc">Former resident technician for Square One at Coventry University. Day-to-day AV setup, event support, and venue management for a busy campus entertainment venue.</p>
+              </div>
+            </article>
+            <article class="co">
+              <div class="co-head"><h3 class="co-name">Warwickshire Cricket</h3><span class="pill">Live Streaming</span></div>
+              <div class="job">
+                <div class="job-title">In-House Technician — County Cricket Live Streaming</div>
+                <div class="job-when">Former</div>
+                <p class="job-desc">Technical support for live streaming of county cricket fixtures. End-to-end broadcast operation for a professional sporting organisation.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── KIT ── -->
+    <section id="kit" class="section alt">
+      <div class="wrap">
+        <div class="center-head">
+          <h2 class="t-h2 rv">Consoles &amp; skills.</h2>
+          <p class="t-lead muted rv" style="--d:.05s">The desks I work on confidently, and what I bring to the show.</p>
+        </div>
+        <div class="kit">
+          <div class="tile wide rv">
+            <h3>Consoles I work with confidently</h3>
+            <ul class="consoles">
+              <li>Allen &amp; Heath SQ5/6/7</li>
+              <li>Allen &amp; Heath Avantis</li>
+              <li>Allen &amp; Heath dLive</li>
+              <li>Yamaha QL2</li>
+              <li>Behringer Wing</li>
+              <li>X32 / M32</li>
+              <li>Soundcraft Vi Series</li>
+              <li>Analogue</li>
+            </ul>
+          </div>
+          <div class="tile rv">
+            <h3>Core sound skills</h3>
+            <ul class="checks">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>FOH</strong> — confident mixing across rock &amp; roll, outdoor, and corporate</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Monitors</strong> — IEM and wedge mixes in demanding live settings</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>System Tech</strong> — EQ, tuning, delay alignment, gain structure</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Broadcast Audio</strong> — sound assist, boom op, OB patching</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>RF &amp; Wireless</strong> — Sennheiser / Shure coordination, multi-channel</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Corporate AV</strong> — conferences, hybrid streaming, breakout rooms</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Show Ops</strong> — advancing, patch management, client comms</span></li>
+            </ul>
+          </div>
+          <div class="tile rv" style="--d:.05s">
+            <h3>Networking &amp; systems</h3>
+            <ul class="checks">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Dante setup and troubleshooting in live environments</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>VLAN separation and AV over IP</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Basic network building — switches, IP addressing, and device setup</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Dante routing in corporate AV, device isolation, redundancy</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <div class="rv"><span class="chip"><span class="dot" aria-hidden="true"></span>Available for hire</span></div>
+        <h2 class="t-hero rv" style="--d:.05s">Let's work together.</h2>
+        <p class="t-lead muted rv" style="--d:.1s">Available for live events, broadcast productions, and corporate AV. Send a Teamtrack link or just say hello — I'll get back to you quickly.</p>
+        <div class="contact-ctas rv" style="--d:.15s">
+          <a href="mailto:hello@cybercole.co.uk" class="btn btn-fill">Email Jack</a>
+          <button type="button" class="btn btn-tint" data-copy="hello@cybercole.co.uk">Copy email</button>
+          <a href="https://www.instagram.com/jackattack96" target="_blank" rel="noopener" class="link">Instagram</a>
+        </div>
+        <p class="contact-addr rv" style="--d:.2s">hello@cybercole.co.uk</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap rule">
+      <span>Jack Cole · Freelance Sound Engineer &amp; AV Technician · Birmingham, UK</span>
+      <span>© 2026 Jack Cole</span>
+    </div>
+  </footer>
+
+  <!-- ── CONTACT SHEET ── -->
+  <div class="scrim"></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="grabber" aria-hidden="true"></div>
+    <span class="chip"><span class="dot" aria-hidden="true"></span>Available for hire</span>
+    <h2 class="t-h3" id="sheet-title" style="margin-top:0.9rem;">Let's work together.</h2>
+    <p>Live events, broadcast and corporate AV. Send a Teamtrack link or just say hello.</p>
+    <div class="sheet-actions">
+      <a href="mailto:hello@cybercole.co.uk" class="sheet-action primary">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email Jack
+      </a>
+      <button type="button" class="sheet-action" data-copy="hello@cybercole.co.uk">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy email <small>hello@cybercole.co.uk</small>
+      </button>
+      <a href="https://www.instagram.com/jackattack96" target="_blank" rel="noopener" class="sheet-action">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        Instagram <small>@jackattack96</small>
+      </a>
     </div>
   </div>
 
-  <!-- ── ABOUT ── -->
-  <section id="about" style="padding: 6rem 4rem;">
-    <div class="about reveal">
-      <div class="about-photo-wrap">
-        <div class="about-photo">
-          <img src="smilejack.jpg" alt="Jack Cole" style="width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(0.85);display:block;" />
-        </div>
-        <div class="about-badge">Based in Birmingham</div>
-      </div>
-      <div class="about-text">
-        <p class="section-label">About Me</p>
-        <h2 class="section-title">Reliable Audio,<br>Every Time.</h2>
-        <div class="section-divider"></div>
-        <p>
-          I'm Jack — a freelance <strong>Sound Engineer and AV Technician</strong> based in Birmingham. I specialise in live sound, broadcast, and corporate AV across festivals, conferences, and televised productions.
-        </p>
-        <p>
-          I've delivered projects for <strong>Vodafone, BBC Question Time, TNT Sports, Premier League football broadcasts and Iconic Auctioneers</strong>, working alongside production companies including Gravity Media, AT Comms, Aztec, Immersive AV, NEP Group, and Cloudbass.
-        </p>
-        <p>
-          My main focus is <strong>sound</strong> — FOH, monitors, broadcast, and corporate AV — but I've also developed a strong interest in <strong>AV networking</strong>: Dante routing, VLANs, and AV over IP, which helps me troubleshoot and improve reliability on complex productions.
-        </p>
-        <div class="about-stats">
-          <div class="stat">
-            <div class="stat-num">7+</div>
-            <div class="stat-label">Years Experience</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">FOH</div>
-            <div class="stat-label">Primary Role</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">RF</div>
-            <div class="stat-label">Wireless Systems</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">OB</div>
-            <div class="stat-label">Broadcast Capable</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="toast" role="status" aria-live="polite">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+    <span>Email copied</span>
+  </div>
 
-  <!-- ── SERVICES ── -->
-  <section id="services" class="services-section">
-    <div class="services-header reveal">
-      <div>
-        <p class="section-label">What I Do</p>
-        <h2 class="section-title">Services</h2>
-      </div>
-    </div>
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <div class="service-number">01</div>
-        <div class="service-title">Live Sound</div>
-        <p class="service-desc">Front of House and monitor mixing across rock &amp; roll, festivals, corporate events, and touring. Comfortable with high stage volumes, difficult acoustics, and demanding schedules.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-number">02</div>
-        <div class="service-title">Broadcast Audio</div>
-        <p class="service-desc">Sound assist, boom op, and OB patching for televised productions including live sports, political debates, and broadcast events. Clean audio under pressure.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-number">03</div>
-        <div class="service-title">Corporate AV</div>
-        <p class="service-desc">Conferences, breakout rooms, hybrid streaming, and theatre-style productions. Reliable operation, client communication, and polished delivery for high-profile brands.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-number">04</div>
-        <div class="service-title">System Tech</div>
-        <p class="service-desc">EQ, system tuning, speaker alignment, delay management, and gain structure. Focused on getting rooms sounding right before the talent walks in.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-number">05</div>
-        <div class="service-title">RF & Wireless</div>
-        <p class="service-desc">Sennheiser and Shure multi-channel coordination, frequency planning, and IEM management for busy stages and high-RF environments.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-number">06</div>
-        <div class="service-title">AV Networking</div>
-        <p class="service-desc">Dante setup and troubleshooting in live environments, VLAN configuration, and AV over IP. Practical experience integrating IT and AV systems on productions.</p>
-      </div>
-    </div>
-  </section>
+  <script>
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    const SPRING_EASE = getComputedStyle(document.documentElement).getPropertyValue('--spring').trim();
 
-  <!-- ── SELECTED WORK ── -->
-  <section id="work" class="work-section">
-    <div class="reveal">
-      <p class="section-label">Portfolio</p>
-      <h2 class="section-title">Selected Work</h2>
-      <div class="section-divider"></div>
-    </div>
-
-    <!-- OB -->
-    <div class="work-category-block reveal">
-      <div class="work-category-label">Outside Broadcast</div>
-
-      <!-- Gravity Media -->
-      <div class="work-company-block">
-        <div class="work-company-header">
-          <div class="work-company-name">Gravity Media</div>
-          <div class="work-company-type">OB · Broadcast</div>
-        </div>
-        <div class="work-company-jobs">
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">FA Cup Final 2026 — Sound Assist (TNT Sports)</div>
-              <div class="work-job-desc">Sound assist at Wembley Stadium for the FA Cup Final, broadcast live on TNT Sports. Working close to talent handling presenter audio, with responsibilities across patching, troubleshooting, and on-the-ground support throughout the production.</div>
-            </div>
-            <div class="work-job-year">May 2026</div>
-          </div>
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">Misfits Boxing — Sound Assist (DAZN)</div>
-              <div class="work-job-desc">Sound assist on the Misfits Boxing event broadcast live on DAZN, held in Derby. On-set audio support for a high-energy live boxing production.</div>
-            </div>
-            <div class="work-job-year">Mar 2026</div>
-          </div>
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">Women's Six Nations — Sound Assist</div>
-              <div class="work-job-desc">Sound assist on the Women's Six Nations broadcast, held in Bristol. On-set audio support for a major international rugby union production.</div>
-            </div>
-            <div class="work-job-year">Apr 2026</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- NEP Group -->
-      <div class="work-company-block">
-        <div class="work-company-header">
-          <div class="work-company-name">NEP Group</div>
-          <div class="work-company-type">OB · Broadcast</div>
-        </div>
-        <div class="work-company-jobs">
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">Premier League & Championship Football — Sound Assist</div>
-              <div class="work-job-desc">Patching and sound support for outside broadcast operations on top-flight and championship football. Nationwide coverage, demanding timelines, and high broadcast standards.</div>
-            </div>
-            <div class="work-job-year">Ongoing</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Cloudbass -->
-      <div class="work-company-block">
-        <div class="work-company-header">
-          <div class="work-company-name">Cloudbass</div>
-          <div class="work-company-type">OB · Broadcast</div>
-        </div>
-        <div class="work-company-jobs">
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">Premier League Football — Sound Assist</div>
-              <div class="work-job-desc">Nationwide sound assist on live Premier League coverage, supporting broadcast audio teams on high-profile match days.</div>
-            </div>
-            <div class="work-job-year">Ongoing</div>
-          </div>
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">British Seniors Snooker — Sound Assist</div>
-              <div class="work-job-desc">Live broadcast sound assist for televised snooker coverage. Precision audio work in a quiet, high-pressure broadcast environment.</div>
-            </div>
-            <div class="work-job-year">Dec 2025</div>
-          </div>
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">BBC Question Time — Sound Assist</div>
-              <div class="work-job-desc">Ongoing sound assist and boom operator on the nationally-televised political programme. Highlight: the 2024 UK General Election Leaders' Special — live, high-pressure broadcast with no margin for error.</div>
-            </div>
-            <div class="work-job-year">Ongoing</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- QTV -->
-      <div class="work-company-block">
-        <div class="work-company-header">
-          <div class="work-company-name">QTV</div>
-          <div class="work-company-type">OB · Broadcast</div>
-        </div>
-        <div class="work-company-jobs">
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">Rugby League — Nationwide Sound Assist</div>
-              <div class="work-job-desc">Sound assist across nationwide rugby league productions. On-set audio support ensuring clean capture for broadcast output.</div>
-            </div>
-            <div class="work-job-year">Ongoing</div>
-          </div>
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">Netball Super League — Nationwide Sound Assist</div>
-              <div class="work-job-desc">Sound assist across nationwide Netball Super League productions. On-set audio support ensuring clean capture for broadcast output.</div>
-            </div>
-            <div class="work-job-year">Ongoing</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CORPORATE AV -->
-    <div class="work-category-block reveal">
-      <div class="work-category-label">Corporate AV</div>
-
-      <!-- JaMa Productions -->
-      <div class="work-company-block">
-        <div class="work-company-header">
-          <div class="work-company-name">JaMa Productions</div>
-          <div class="work-company-type">Corporate AV</div>
-        </div>
-        <div class="work-company-jobs">
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">Iconic Auctioneers — Nationwide AV Engineer</div>
-              <div class="work-job-desc">Perma-lance AV engineer for Iconic Auctioneers' high-profile live automotive auctions across the UK. Audio clarity across live and streamed settings, ongoing relationship.</div>
-            </div>
-            <div class="work-job-year">Ongoing</div>
-          </div>
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">Vodafone @ Glastonbury — AV Technician</div>
-              <div class="work-job-desc">Two consecutive years overseeing AV across Vodafone's exclusive VIP area and Charge &amp; Connect lounge at Glastonbury Festival. Full-week deployment managing guest-facing AV including DJ build for the VIP retreat.</div>
-            </div>
-            <div class="work-job-year">2024 – 2025</div>
-          </div>
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">Brighton Pride — AV Technician</div>
-              <div class="work-job-desc">Onsite AV support across two years at one of the UK's largest Pride events, delivering reliable live event production in a large-scale outdoor environment.</div>
-            </div>
-            <div class="work-job-year">2024 – 2025</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Other companies -->
-      <div class="work-company-block">
-        <div class="work-company-header">
-          <div class="work-company-name">Also Working With</div>
-          <div class="work-company-type">Corporate AV</div>
-        </div>
-        <div class="work-company-jobs">
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">Aztec AV &nbsp;·&nbsp; AT Communications &nbsp;·&nbsp; Immersive AV &nbsp;·&nbsp; Sterling Event Group &nbsp;·&nbsp; Eventurous</div>
-              <div class="work-job-desc">Conferences, hybrid events, breakout rooms, theatre-style productions and corporate shows for a range of clients. Reliable AV operation, strong client communication, and polished delivery across brands and venues nationwide.</div>
-            </div>
-            <div class="work-job-year">Ongoing</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LOCAL ROCK & ROLL -->
-    <div class="work-category-block reveal">
-      <div class="work-category-label">Local Rock &amp; Roll</div>
-
-      <div class="work-company-block">
-        <div class="work-company-header">
-          <div class="work-company-name">Birmingham Live Venues</div>
-          <div class="work-company-type">FOH · Monitors</div>
-        </div>
-        <div class="work-company-jobs">
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">FOH, Monitors &amp; Patch — Small Venue Circuit</div>
-              <div class="work-job-desc">Mixing FOH and monitors, running patch for bands and touring acts across Birmingham's small venue circuit — including The Hare &amp; Hounds, The Castle &amp; Falcon, and The Victoria. Tight changeovers, varied acoustics, and real-world mixing in the trenches.</div>
-            </div>
-            <div class="work-job-year">Ongoing</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MISC -->
-    <div class="work-category-block reveal">
-      <div class="work-category-label">Previous Roles</div>
-
-      <div class="work-company-block">
-        <div class="work-company-header">
-          <div class="work-company-name">Square One / Coventry University</div>
-          <div class="work-company-type">In-House Tech</div>
-        </div>
-        <div class="work-company-jobs">
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">In-House AV Technician</div>
-              <div class="work-job-desc">Former resident technician for Square One at Coventry University. Day-to-day AV setup, event support, and venue management for a busy campus entertainment venue.</div>
-            </div>
-            <div class="work-job-year">Former</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="work-company-block">
-        <div class="work-company-header">
-          <div class="work-company-name">Warwickshire Cricket</div>
-          <div class="work-company-type">Live Streaming</div>
-        </div>
-        <div class="work-company-jobs">
-          <div class="work-job-item">
-            <div>
-              <div class="work-job-title">In-House Technician — County Cricket Live Streaming</div>
-              <div class="work-job-desc">Technical support for live streaming of county cricket fixtures. End-to-end broadcast operation for a professional sporting organisation.</div>
-            </div>
-            <div class="work-job-year">Former</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ── SKILLS ── -->
-  <section id="skills" class="skills-section">
-    <div class="reveal">
-      <p class="section-label">Toolkit</p>
-      <h2 class="section-title">Skills & Consoles</h2>
-      <div class="section-divider"></div>
-    </div>
-    <div class="skills-grid reveal">
-      <div>
-        <p class="skill-group-title">Consoles I work with confidently</p>
-        <div class="desk-list">
-          <span class="desk-tag">Allen &amp; Heath SQ5/6/7</span>
-          <span class="desk-tag">Allen &amp; Heath Avantis</span>
-          <span class="desk-tag">Allen &amp; Heath dLive</span>
-          <span class="desk-tag">Yamaha QL2</span>
-          <span class="desk-tag">Behringer Wing</span>
-          <span class="desk-tag">X32 / M32</span>
-          <span class="desk-tag">Soundcraft Vi Series</span>
-          <span class="desk-tag">Analogue</span>
-        </div>
-
-        <p class="skill-group-title" style="margin-top:2rem;">Networking & Systems</p>
-        <ul class="skill-list">
-          <li>Dante setup and troubleshooting in live environments</li>
-          <li>VLAN separation and AV over IP</li>
-          <li>Basic network building — switches, IP addressing, and device setup</li>
-          <li>Dante routing in corporate AV, device isolation, redundancy</li>
-        </ul>
-      </div>
-      <div>
-        <p class="skill-group-title">Core Sound Skills</p>
-        <ul class="skill-list">
-          <li><strong style="color:var(--text)">FOH</strong> — confident mixing across rock &amp; roll, outdoor, and corporate</li>
-          <li><strong style="color:var(--text)">Monitors</strong> — IEM and wedge mixes in demanding live settings</li>
-          <li><strong style="color:var(--text)">System Tech</strong> — EQ, tuning, delay alignment, gain structure</li>
-          <li><strong style="color:var(--text)">Broadcast Audio</strong> — sound assist, boom op, OB patching</li>
-          <li><strong style="color:var(--text)">RF &amp; Wireless</strong> — Sennheiser / Shure coordination, multi-channel</li>
-          <li><strong style="color:var(--text)">Corporate AV</strong> — conferences, hybrid streaming, breakout rooms</li>
-          <li><strong style="color:var(--text)">Show Ops</strong> — advancing, patch management, client comms</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CONTACT ── -->
-  <section id="contact" class="contact-section">
-    <div class="contact-inner" style="padding: 0 4rem; width: 100%;">
-      <div class="reveal">
-        <h2 class="contact-title">
-          Let's Work<br>
-          <span>Together.</span>
-        </h2>
-        <p class="contact-desc">
-          Available for live events, broadcast productions, and corporate AV. Send a Teamtrack link or just say hello — I'll get back to you quickly.
-        </p>
-        <div class="contact-links">
-          <a href="/cdn-cgi/l/email-protection#ee868b828281ae8d978c8b9c8d81828bc08d81c09b85" class="contact-link primary">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-            <span class="__cf_email__" data-cfemail="2e464b4242416e4d574c4b5c4d41424b004d41005b45">[email&#160;protected]</span>
-          </a>
-          <a href="https://www.instagram.com/jackattack96" target="_blank" rel="noopener" class="contact-link">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-            Instagram
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── FOOTER ── -->
-  <footer>
-    <span class="footer-logo">Jack Cole</span>
-    <span class="footer-text">© 2025 Jack Cole · Freelance Sound Engineer & AV Technician</span>
-    <span class="footer-loc">📍 Birmingham, UK</span>
-  </footer>
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
+    // ── SPRING ──
+    // Apple's two designer-facing parameters: damping ratio (1 = no overshoot) and
+    // response (seconds, not a duration). Always animates from the live value and
+    // carries velocity through a re-target, so anything can be grabbed mid-flight.
+    class Spring {
+      constructor(value, onUpdate) {
+        this.value = value; this.velocity = 0; this.target = value;
+        this.onUpdate = onUpdate; this.onRest = null; this.raf = 0;
+      }
+      to(target, { velocity, damping = 1, response = 0.4, onRest } = {}) {
+        this.target = target;
+        if (velocity !== undefined) this.velocity = velocity;
+        this.k = Math.pow(2 * Math.PI / response, 2);
+        this.c = 4 * Math.PI * damping / response;
+        this.onRest = onRest || null;
+        if (!this.raf) { this.last = performance.now(); this.raf = requestAnimationFrame(t => this.tick(t)); }
+      }
+      tick(now) {
+        let dt = Math.min((now - this.last) / 1000, 0.064); this.last = now;
+        const h = 1 / 240; // fixed sub-steps keep stiff springs stable
+        while (dt > 0) {
+          const step = Math.min(h, dt); dt -= step;
+          const a = -this.k * (this.value - this.target) - this.c * this.velocity;
+          this.velocity += a * step; this.value += this.velocity * step;
         }
-      }),
-      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
-    );
-    reveals.forEach(el => observer.observe(el));
-    // Fallback: show all after 2s in case observer doesn't fire
-    setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 2000);
+        if (Math.abs(this.value - this.target) < 0.1 && Math.abs(this.velocity) < 2) {
+          this.value = this.target; this.velocity = 0; this.raf = 0;
+          this.onUpdate(this.value);
+          const done = this.onRest; this.onRest = null; done && done();
+          return;
+        }
+        this.onUpdate(this.value);
+        this.raf = requestAnimationFrame(t => this.tick(t));
+      }
+      stop() { cancelAnimationFrame(this.raf); this.raf = 0; this.velocity = 0; this.onRest = null; }
+      set(v) { this.stop(); this.value = this.target = v; this.onUpdate(v); }
+      get moving() { return this.raf !== 0; }
+    }
+
+    // Apple's momentum projection (Designing Fluid Interfaces), v in px/s
+    const project = (v, rate = 0.998) => (v / 1000) * rate / (1 - rate);
+    const rubberband = (over, dim, c = 0.55) => (over * dim * c) / (dim + c * Math.abs(over));
+    const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+    // Velocity from the last ~100ms of pointer history, not just the final event
+    function tracker() {
+      let pts = [];
+      return {
+        push(v) { const t = performance.now(); pts.push({ v, t }); pts = pts.filter(p => t - p.t < 100); },
+        velocity() {
+          if (pts.length < 2) return 0;
+          const a = pts[0], b = pts[pts.length - 1];
+          if (performance.now() - b.t > 60) return 0; // finger paused before lifting
+          return (b.v - a.v) / Math.max((b.t - a.t) / 1000, 0.001);
+        },
+        reset() { pts = []; }
+      };
+    }
+
+    // ── REVEAL ──
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+    // ── NAV: material adapts to the section beneath; current section is brighter ──
+    const nav = document.querySelector('.nav');
+    const darkSections = [...document.querySelectorAll('[data-theme="dark"]')];
+    const navLinks = [...document.querySelectorAll('.nav-links a')];
+    const navTargets = navLinks.map(a => document.querySelector(a.getAttribute('href')));
+    const heroMedia = document.querySelector('.hero-media');
+    let scrollQueued = false;
+
+    function onScroll() {
+      scrollQueued = false;
+      nav.classList.toggle('scrolled', scrollY > 4);
+      const mid = 26;
+      nav.classList.toggle('on-dark', darkSections.some(s => { const r = s.getBoundingClientRect(); return r.top <= mid && r.bottom > mid; }));
+      const probe = innerHeight * 0.4;
+      navLinks.forEach((a, i) => { const r = navTargets[i].getBoundingClientRect(); a.classList.toggle('current', r.top <= probe && r.bottom > probe); });
+      // Hero photo grows to full size as it rises — tied 1:1 to scroll, no timeline
+      if (!reduceMotion.matches) {
+        const r = heroMedia.getBoundingClientRect();
+        const p = clamp((innerHeight - r.top) / (innerHeight * 0.85), 0, 1);
+        heroMedia.style.transform = `scale(${0.9 + 0.1 * p})`;
+      }
+    }
+    addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(onScroll); } }, { passive: true });
+    addEventListener('resize', onScroll);
+    onScroll();
+
+    // ── HIGHLIGHTS: native momentum on touch; mouse drag gets the same physics ──
+    const track = document.querySelector('.hl-track');
+    const rail = track.querySelector('.hl-rail');
+    const cards = [...rail.children];
+    const prevBtn = document.querySelector('[data-hl="-1"]');
+    const nextBtn = document.querySelector('[data-hl="1"]');
+    const maxScroll = () => track.scrollWidth - track.clientWidth;
+    const snapPoints = () => {
+      // The rail's padding mirrors the track's scroll-padding, but resolves to px
+      const pad = parseFloat(getComputedStyle(rail).paddingLeft) || 0, max = maxScroll();
+      return [...new Set(cards.map(c => Math.round(clamp(c.offsetLeft - pad, 0, max))))];
+    };
+    const nearest = (x, pts) => pts.reduce((a, b) => Math.abs(b - x) < Math.abs(a - x) ? b : a);
+    function updateArrows() {
+      prevBtn.disabled = track.scrollLeft <= 2;
+      nextBtn.disabled = track.scrollLeft >= maxScroll() - 2;
+    }
+    track.addEventListener('scroll', updateArrows, { passive: true });
+    updateArrows();
+
+    const scrollSpring = new Spring(0, v => { track.scrollLeft = v; updateArrows(); });
+    const railSpring = new Spring(0, v => { rail.style.transform = Math.abs(v) > 0.05 ? `translateX(${v}px)` : ''; });
+    function glideTo(x, velocity = 0, damping = 1) {
+      track.style.scrollSnapType = 'none';
+      scrollSpring.value = track.scrollLeft;
+      scrollSpring.to(x, { velocity, damping, response: 0.45, onRest: () => { track.style.scrollSnapType = ''; } });
+    }
+    function stepHighlights(dir) {
+      // Rapid presses stack: count from where the glide is headed, not where it is
+      const pts = snapPoints(), cur = scrollSpring.moving ? scrollSpring.target : track.scrollLeft;
+      let target = dir > 0 ? pts.find(x => x > cur + 4) : [...pts].reverse().find(x => x < cur - 4);
+      if (target === undefined) target = dir > 0 ? pts[pts.length - 1] : 0;
+      if (reduceMotion.matches) { track.scrollTo({ left: target }); return; }
+      glideTo(target);
+    }
+    prevBtn.addEventListener('click', () => stepHighlights(-1));
+    nextBtn.addEventListener('click', () => stepHighlights(1));
+    track.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); stepHighlights(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); stepHighlights(-1); }
+    });
+
+    const hlTrack = tracker();
+    let hlDrag = null;
+    track.addEventListener('dragstart', e => e.preventDefault());
+    track.addEventListener('pointerdown', e => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      // Catching a gliding gallery stops it exactly where it is
+      scrollSpring.stop(); railSpring.stop();
+      hlDrag = { x: e.clientX, from: track.scrollLeft, band: railSpring.value, moved: false, id: e.pointerId };
+      hlTrack.reset(); hlTrack.push(track.scrollLeft);
+      track.style.scrollSnapType = 'none';
+    });
+    track.addEventListener('pointermove', e => {
+      if (!hlDrag || e.pointerId !== hlDrag.id) return;
+      const dx = e.clientX - hlDrag.x;
+      if (!hlDrag.moved && Math.abs(dx) < 6) return;
+      if (!hlDrag.moved) { hlDrag.moved = true; try { track.setPointerCapture(e.pointerId); } catch {} track.classList.add('grabbing'); }
+      const max = maxScroll();
+      let want = hlDrag.from - hlDrag.band - dx; // 1:1 with the pointer, from where it was grabbed
+      let over = 0;
+      if (want < 0) { over = -want; want = 0; } else if (want > max) { over = max - want; want = max; }
+      track.scrollLeft = want; updateArrows();
+      const band = over ? rubberband(over, track.clientWidth) : 0; // soft edges, not a wall
+      railSpring.value = band; rail.style.transform = band ? `translateX(${band}px)` : '';
+      hlTrack.push(want - band);
+    });
+    function endHlDrag() {
+      if (!hlDrag) return;
+      const { moved } = hlDrag; hlDrag = null;
+      track.classList.remove('grabbing');
+      if (!moved) { track.style.scrollSnapType = ''; return; }
+      const v = hlTrack.velocity();
+      if (Math.abs(railSpring.value) > 0.5) {
+        railSpring.to(0, { response: 0.4, onRest: () => { track.style.scrollSnapType = ''; } });
+        return;
+      }
+      // Land where the throw is going, then hand the release velocity to the spring
+      const target = nearest(track.scrollLeft + project(v), snapPoints());
+      const atEdge = target <= 0 || target >= maxScroll();
+      glideTo(target, v, Math.abs(v) > 400 && !atEdge ? 0.85 : 1);
+    }
+    track.addEventListener('pointerup', endHlDrag);
+    track.addEventListener('pointercancel', endHlDrag);
+    track.addEventListener('click', e => { if (track.classList.contains('grabbing')) e.preventDefault(); }, true);
+
+    // ── CREDITS: segmented control with a draggable, spring-driven thumb ──
+    const seg = document.querySelector('.seg');
+    const segTabs = [...seg.querySelectorAll('[role="tab"]')];
+    const panels = segTabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
+    const thumb = seg.querySelector('.seg-thumb');
+    let segIndex = 0;
+    const thumbX = new Spring(0, v => { thumb.style.transform = `translateX(${v}px)`; });
+    const segW = () => segTabs[0].offsetWidth;
+
+    function selectSeg(i, { focus = false } = {}) {
+      const prev = segIndex;
+      segTabs.forEach((t, j) => { t.setAttribute('aria-selected', j === i); t.tabIndex = j === i ? 0 : -1; });
+      if (focus) segTabs[i].focus();
+      const x = i * segW();
+      if (reduceMotion.matches) thumbX.set(x); else thumbX.to(x, { response: 0.35 });
+      segIndex = i;
+      if (i === prev) return;
+      panels[prev].hidden = true;
+      const panel = panels[i];
+      panel.hidden = false;
+      panel.classList.add('in'); // panels below the first never pass through the reveal
+      panel.getAnimations().forEach(a => a.cancel());
+      // Content enters from the side the selection moved toward
+      const dir = Math.sign(i - prev);
+      panel.animate(
+        reduceMotion.matches
+          ? [{ opacity: 0 }, { opacity: 1 }]
+          : [{ opacity: 0, transform: `translateX(${dir * 48}px)` }, { opacity: 1, transform: 'none' }],
+        { duration: reduceMotion.matches ? 200 : 600, easing: reduceMotion.matches ? 'ease' : SPRING_EASE }
+      );
+    }
+    seg.addEventListener('keydown', e => {
+      const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      selectSeg((segIndex + d + segTabs.length) % segTabs.length, { focus: true });
+    });
+
+    let segDrag = null;
+    seg.addEventListener('pointerdown', e => {
+      const tab = e.target.closest('[role="tab"]');
+      if (!tab) return;
+      const i = segTabs.indexOf(tab);
+      // Only the selected segment (the thumb) can be dragged, like iOS
+      segDrag = { i, x: e.clientX, from: thumbX.value, onThumb: i === segIndex, moved: false, id: e.pointerId };
+    });
+    seg.addEventListener('pointermove', e => {
+      if (!segDrag || !segDrag.onThumb || e.pointerId !== segDrag.id) return;
+      const dx = e.clientX - segDrag.x;
+      if (!segDrag.moved && Math.abs(dx) < 4) return;
+      if (!segDrag.moved) { segDrag.moved = true; thumbX.stop(); try { seg.setPointerCapture(e.pointerId); } catch {} seg.classList.add('dragging'); }
+      const max = (segTabs.length - 1) * segW();
+      let x = segDrag.from + dx;
+      if (x < 0) x = rubberband(x, segW()); else if (x > max) x = max + rubberband(x - max, segW());
+      thumbX.value = x; thumb.style.transform = `translateX(${x}px)`;
+    });
+    function endSegDrag() {
+      if (!segDrag) return;
+      const d = segDrag; segDrag = null;
+      seg.classList.remove('dragging');
+      if (d.moved) {
+        const i = clamp(Math.round(thumbX.value / segW()), 0, segTabs.length - 1);
+        if (i === segIndex) thumbX.to(i * segW(), { response: 0.35 }); else selectSeg(i);
+      } else {
+        selectSeg(d.i);
+      }
+    }
+    seg.addEventListener('pointerup', endSegDrag);
+    seg.addEventListener('pointercancel', endSegDrag);
+    addEventListener('resize', () => thumbX.set(segIndex * segW()));
+
+    // ── CONTACT SHEET ──
+    const sheet = document.querySelector('.sheet');
+    const scrim = document.querySelector('.scrim');
+    let H = 400, isOpen = false, lastFocus = null;
+    const renderSheet = y => {
+      sheet.style.transform = `translateY(${y}px)`;
+      // Scrim tracks the sheet continuously, so a drag dims/undims live
+      scrim.style.opacity = clamp(1 - y / H, 0, 1);
+      const visible = isOpen || y < H + 39;
+      sheet.style.visibility = scrim.style.visibility = visible ? 'visible' : 'hidden';
+    };
+    const sheetY = new Spring(H + 40, renderSheet);
+    const restoreFocus = () => lastFocus && lastFocus.focus({ preventScroll: true });
+
+    function openSheet(e) {
+      e && e.preventDefault();
+      H = sheet.offsetHeight;
+      if (!isOpen) {
+        lastFocus = document.activeElement;
+        if (!sheetY.moving) sheetY.set(H + 40);
+      }
+      isOpen = true;
+      renderSheet(sheetY.value);
+      document.body.style.overflow = 'hidden';
+      if (reduceMotion.matches) {
+        sheet.style.transition = 'opacity 200ms ease';
+        sheet.style.opacity = 0; sheetY.set(0);
+        requestAnimationFrame(() => { sheet.style.opacity = 1; });
+      } else {
+        sheetY.to(0, { damping: 1, response: 0.4 });
+      }
+      sheet.querySelector('.sheet-action').focus({ preventScroll: true });
+    }
+    function closeSheet(velocity = 0) {
+      if (!isOpen) return;
+      isOpen = false;
+      document.body.style.overflow = '';
+      if (reduceMotion.matches) {
+        sheet.style.opacity = 0; scrim.style.opacity = 0;
+        setTimeout(() => { sheetY.set(H + 40); restoreFocus(); }, 200);
+      } else {
+        // Leaves along the same path it arrived, at the finger's speed
+        sheetY.to(H + 40, { velocity, damping: 1, response: 0.35, onRest: restoreFocus });
+      }
+    }
+    document.querySelectorAll('[data-sheet]').forEach(a => a.addEventListener('click', openSheet));
+    scrim.addEventListener('click', () => closeSheet());
+    addEventListener('keydown', e => {
+      if (!isOpen) return;
+      if (e.key === 'Escape') closeSheet();
+      if (e.key === 'Tab') { // keep focus inside the dialog
+        const f = [...sheet.querySelectorAll('a, button')];
+        const i = f.indexOf(document.activeElement);
+        if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+      }
+    });
+
+    const sTrack = tracker();
+    let sStart = null, sDragged = false;
+    sheet.addEventListener('pointerdown', e => {
+      if (reduceMotion.matches) return;
+      // Interruptible: grabbing a moving sheet stops it where it is on screen
+      sheetY.stop();
+      sStart = { y: e.clientY, from: sheetY.value, id: e.pointerId };
+      sDragged = false; sTrack.reset(); sTrack.push(sheetY.value);
+    });
+    sheet.addEventListener('pointermove', e => {
+      if (!sStart || e.pointerId !== sStart.id) return;
+      const dy = e.clientY - sStart.y;
+      if (!sDragged && Math.abs(dy) < 8) return; // hysteresis before committing to a drag
+      if (!sDragged) { sDragged = true; try { sheet.setPointerCapture(e.pointerId); } catch {} }
+      let y = sStart.from + dy;
+      if (y < 0) y = rubberband(y, H); // soft boundary above the open position
+      sheetY.value = y; renderSheet(y); sTrack.push(y);
+    });
+    function endSheetDrag() {
+      if (!sStart) return;
+      const wasDrag = sDragged; sStart = null;
+      if (!wasDrag) { // a tap mid-flight resumes toward wherever it was heading
+        if (isOpen) sheetY.to(0);
+        else sheetY.to(H + 40, { response: 0.35, onRest: restoreFocus });
+        return;
+      }
+      const v = sTrack.velocity();
+      // Decide from where the gesture is going, not where the finger let go
+      if (sheetY.value + project(v) > H * 0.5) closeSheet(v);
+      else sheetY.to(0, { velocity: v, damping: Math.abs(v) > 300 ? 0.8 : 1, response: 0.3 });
+    }
+    sheet.addEventListener('pointerup', endSheetDrag);
+    sheet.addEventListener('pointercancel', endSheetDrag);
+    // A drag that ends over a button shouldn't also fire it
+    sheet.addEventListener('click', e => { if (sDragged) { e.preventDefault(); e.stopPropagation(); sDragged = false; } }, true);
+
+    // ── COPY EMAIL: completion feedback ──
+    const toast = document.querySelector('.toast');
+    let toastTimer;
+    document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy;
+      try { await navigator.clipboard.writeText(text); }
+      catch { const t = document.createElement('textarea'); t.value = text; document.body.append(t); t.select(); document.execCommand('copy'); t.remove(); }
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1600);
+    }));
   </script>
 </body>
 </html>
